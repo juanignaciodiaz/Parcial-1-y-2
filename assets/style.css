@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:'oswald' ;
+    text-align: center;
+}
+
+body{
+    background-color: #F7F7F7;
+}
+h1{
+    text-align:center;
+    color: rgb(255, 255, 255);
+}
+
+
+
+p{
+    color: rgb(255, 255, 255);
+}
+
+header img{
+    height: 160px;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    display: block;
+}
+
+header{
+    background-color: #BC0000;
+    height: 145px;
+    margin-top: 0px;
+    padding-top: 50px ;
+}
+
+header ul{
+    position: absolute;
+    right: 100px;
+    list-style: none;
+    top: 50px;
+}
+
+header ul li a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+header ul li a :hover{
+    color: seagreen;
+    text-decoration: none;
+}
+
+.navbar{
+    margin-bottom: 25px;
+    }
