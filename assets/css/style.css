@@ -1,4 +1,99 @@
-*{
+* {
+    padding: 0;
+    font-family:'oswald' ;
+    margin: 0;
+}
+
+
+header {
+    padding: 20px;
+    background-color: #BC0000;
+    /* FLEX */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo-titulo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    /* font-family: ; */
+}
+
+.logo-titulo h1 {
+    width: 25%;
+    font-size: 30px;
+}
+.logo-titulo img {
+    width: 150px;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+}
+
+header ul li {
+    margin-right: 15px;
+}
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header ul li a:hover {
+    text-decoration: none;
+    color: #F57C00;
+    transition: all 300ms;
+}
+
+
+
+
+
+
+/* ---- FOOTER ---- */
+
+footer {
+    /* margin: auto; */
+    margin-top: 10px;
+    padding-top: 2%;
+    background-color: #BC0000;
+    width: 100%;
+    min-height: 100px;
+
+
+    display: flex;
+    justify-content: center;
+}
+
+footer section {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+}
+footer section article {
+    /* flex: ; */
+
+    width: 30%;
+}
+footer section article  h3{
+    text-align: center;
+    color: #fff;
+}
+
+footer section article ul li a,
+footer section article ul li{
+    color: #fff;
+}
+
+
+/* ---------------- */
+/* *{
     margin: 0px;
     padding: 0px;
     font-family:'oswald' ;
@@ -54,4 +149,4 @@ header ul li a :hover{
 
 .navbar{
     margin-bottom: 25px;
-    }
+    } */
