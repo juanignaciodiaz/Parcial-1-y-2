@@ -3,7 +3,14 @@
     font-family:'oswald' ;
     margin: 0;
 }
+ul {
+    list-style: none;
+}
 
+main {
+    /* height: 100%; */
+    background-color: #F57C00;
+}
 
 header {
     padding: 20px;
@@ -49,12 +56,54 @@ header ul li a:hover {
     color: #F57C00;
     transition: all 300ms;
 }
+/* --------------------- */
+/* Producto */
+
+.zona-productos {
+    margin: 30px;
+    display: flex;
+    flex-flow: row wrap;
+}
+.filtro {
+    border: 1px solid black;
+    width: 15%;
+    min-width: 150px;
+    min-height: 200px;
+    box-sizing: border-box;
+}
+
+.filtro>ul {
+    margin: 10px;
+}
+
+.filtro ul li ul {
+    display: none;
+    list-style: none;
+    margin-left: 10px;
+}
+
+.filtro ul li ul:target {
+    display: block;
+}
 
 
+.articulos {
+    width: 85%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    padding: 20px;
 
+    
 
+}
 
+.articulos section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
 
+/* ---------------------- */
 /* ---- FOOTER ---- */
 
 footer {
@@ -67,23 +116,27 @@ footer {
 
 
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
 }
 
 footer section {
     width: 80%;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-around;
     /* border: 1px solid black; */
 }
 footer section article {
-    /* flex: ; */
-
-    width: 30%;
+    
+    /* border: 1px solid black; */
+    flex: 1;
+    padding: 20px;
 }
 footer section article  h3{
     text-align: center;
     color: #fff;
+    margin-bottom: 30px;
 }
 
 footer section article ul li a,
