@@ -102,6 +102,32 @@ header ul li a:hover {
     justify-content: space-around;
 }
 
+.cartas{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+.titulocartas{
+    text-align: center;
+    height: 40px;
+}
+
+.cartas article img{
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+.precioo1c{
+    color: gray;
+    font-size: 20px;
+}
+
+.ofertareal{
+    color: red;
+    font-size: 25px;
+}
 /* ---------------------- */
 /* ---- FOOTER ---- */
 
