@@ -26,7 +26,6 @@ header .logo-titulo {
     display: flex;
     align-items: center;
     color: #fff;
-    /* font-family: ; */
 }
 
 .logo-titulo h1 {
@@ -144,6 +143,11 @@ footer section article ul li{
     color: #fff;
 }
 
+footer section article ul li a :hover,
+footer section article ul li :hover{
+    color:cornflowerblue;
+    text-decoration: none;
+}
 
 /* ---------------- */
 /* *{
