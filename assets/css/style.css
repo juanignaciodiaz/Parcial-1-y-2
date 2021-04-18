@@ -8,8 +8,8 @@ ul {
 }
 
 main {
-    /* height: 100%; */
-    /* background-color: #F57C00; */
+     height: 100%; 
+    background-color: rgb(238, 238, 238); 
 }
 
 header {
@@ -85,15 +85,15 @@ header ul li a:hover {
     display: block;
 }
 
-
+h3{
+    text-align: center;
+    margin-top: 3%;
+}
 .articulos {
     width: 85%;
     border: 1px solid black;
     box-sizing: border-box;
     padding: 20px;
-
-    
-
 }
 
 .articulos section {
@@ -102,11 +102,21 @@ header ul li a:hover {
     justify-content: space-around;
 }
 
+section{
+    
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+
+}
+
 .cartas{
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: 4%;
+    margin-top: 1%;
 }
 
 .titulocartas{
@@ -119,6 +129,39 @@ header ul li a:hover {
     display: block;
     margin: auto;
 }
+.cartas2{
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.cartas2 article img{
+    width: 100px;
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+
+.cartas3{
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.cartas3 article img{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+
+
 .precioo1c{
     color: gray;
     font-size: 20px;
