@@ -203,3 +203,63 @@ header ul li a :hover{
 .navbar{
     margin-bottom: 25px;
     } */
+
+
+
+    .contac{
+        height: 100%; 
+        /* border: 5px red solid;  */
+        margin: 50px;
+    }
+
+    
+    
+    .contac p{
+        font-family: inherit;
+        /* border: 1px red solid ; */
+        font-size: 20px;
+        
+    }
+    
+    section h2{
+        margin-top: 50px ;
+     
+    }
+    
+    .nido{
+        margin-top: 50px;
+    }
+
+    .nido img{
+        border: 3px red solid;
+        
+    }
+
+    .nido text{
+        margin: 20px;
+        right: 2323px;
+    }
+
+    .carozzi{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -180px;
+        
+    }
+
+    .carozzi img{
+        border: 3px red solid;
+    }
+
+    .sprunk{
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top:  -155px;
+        
+    }
+
+    .sprunk img{
+        border: 3px red solid;
+
+    }
