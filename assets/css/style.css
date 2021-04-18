@@ -9,7 +9,7 @@ ul {
 
 main {
     /* height: 100%; */
-    /* background-color: #F57C00; */
+    background-color: rgb(238, 238, 238);
 }
 
 header {
@@ -65,13 +65,16 @@ header ul li a:hover {
     flex-flow: row wrap;
 }
 .filtro {
-    border: 1px solid black;
-    width: 15%;
+    border: 1px solid rgb(199, 199, 199);
+    border-right: 0px;
+    background-color: #fff;
+    width: 20%;
     min-width: 150px;
     min-height: 200px;
     box-sizing: border-box;
+    max-height: 280px;
 }
-
+.filtro h3,
 .filtro>ul {
     margin: 10px;
 }
@@ -88,8 +91,9 @@ header ul li a:hover {
 
 
 .articulos {
-    width: 85%;
-    border: 1px solid black;
+    width: 75%;
+    border: 1px solid rgb(199, 199, 199);
+    background-color: #fff;
     box-sizing: border-box;
     padding: 20px;
 
@@ -100,7 +104,27 @@ header ul li a:hover {
 .articulos section {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+}
+.articulos section article {
+    margin-right: 10px;
+}
+
+/* Cartas */
+.articulos section article .card img {
+    width: 100px;
+    height: 150px;
+    display: block;
+    margin: auto;
+}
+
+.card-body p .producto-antes{
+    text-decoration: line-through;
+    font-size: 20px;
+    color: gray;
+}
+.articulos section article .card-body .producto-oferta {
+    color: red;
 }
 
 /* ---------------------- */
