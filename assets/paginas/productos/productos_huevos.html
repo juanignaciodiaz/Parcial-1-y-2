@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es_cl">
+<head>
+  <meta charset="utf-8" /> 
+  <title>Supermarket | Productos</title>
+  <link rel="shortcut icon" href="../../images/Logo24.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://kit.fontawesome.com/595302b812.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&family=RocknRoll+One&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/style.css" />
+
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="logo-titulo">
+        <img src="../../images/Logo24.png" alt="Logo">
+        <h1>Supermercados <i class="fas fa-shopping-cart"></i> 24/7</h1>
+
+      </div>
+
+      <ul>
+        <li>
+          <a href="https://www.instagram.com" target="_blank"><i class="fas fa-user"></i> Iniciar Sesión</a>
+        </li>
+        <li>
+          <a href="https://www.twitter.com" target="_blank"><i class="fas fa-user-edit"></i>Registrar</a>
+        </li>
+      </ul>
+      
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <a class="navbar-brand" href="../../../index.html">24/7 Supermarket</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Productos <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Comentarios</a>
+          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="#">Atencion al cliente</a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="zona-productos">
+      <div class="filtro">
+        <h3>Filtro:</h3>
+        <ul>
+          <li><a href="../productos.html">Todo</a></li>
+          <li><a href="#subcategorias1">Lácteos</a>
+            <ul id="subcategorias1">
+              <li><a href="productos_leches.html">Leches</a></li>
+              <li><a href="#">huevos</a></li>
+              <li class="productoBloqueado">Postres</li>
+            </ul>
+          </li>
+          <li><a href="#subcategorias2">Despensa</a>
+            <ul id="subcategorias2">
+              <li><a href="productos_abarrotes.html">Abarrotes</a></li>
+              <li class="productoBloqueado">Conservas</li>
+              <li><a href="productos_salsaCondimento.html">Salsas y condimentos</a></li>
+            </ul>
+          </li>
+          <li><a href="#subcategorias3">Frutas y Verduras</a>
+            <ul id="subcategorias3">
+              <li><a href="productos_frutas.html">Frutas</a></li>
+              <li class="productoBloqueado">Verduras</li>
+              <li><a href="productos_frutosSecos.html">Frutos secos</a></li>
+            </ul></li>
+          <li><a href="productos_bebidas.html">Bebidas</a></li>
+        </ul>
+      </div>
+      
+      <div class="articulos">
+        <h3>Huevos</h3>
+        <Section>
+          
+          <article>
+            <div class="card mb-1" style="width: 13rem;">
+              <img src="../../images/Productos/bandejaHuevo.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title ">Bandeja de huevos</h5>
+                <p class="card-text">$1.200</p>
+                <a href="#" class="btn btn-primary">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+        </Section>
+      </div>
+
+    </div>
+
+
+    <footer>
+      <section>
+        <article class="redes-sociales">
+          <h3>Redes sociales</h3>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twittwe
+            </a></li>
+          </ul>
+        </article>
+        <article class="direccion">
+          <h3>Direcciones</h3>
+          <ul>
+            <li>Direccion 1</li>
+            <li>Direccion 2</li>
+            <li>Direccion 3</li>
+          </ul>
+        </article class="nuestra-empresa">
+        <article>
+          <h3>Nuestra empresa</h3>
+          <ul>
+            <li><a href="#">Trabaja con sosotros</a></li>
+            <li><a href="#">Opción 2</a></li>
+          </ul>
+        </article>
+      </section>
+    </footer>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+
+</html>

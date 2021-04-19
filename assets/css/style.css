@@ -8,7 +8,7 @@ ul {
 }
 
 main {
-    /* height: 100%; */
+    height: 100%;
     background-color: rgb(238, 238, 238);
 }
 
@@ -96,7 +96,7 @@ header ul li a:hover {
     background-color: #fff;
     box-sizing: border-box;
     padding: 20px;
-
+    padding-right: 10px;
     
 
 }
@@ -127,6 +127,31 @@ header ul li a:hover {
     color: red;
 }
 
+/* ---------------------- */
+/* INICIAR SESION */
+.container {
+    border: 1px solid rgb(199, 199, 199);
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.politicas,
+.formulario {
+    width: 50%;
+
+}
+input {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: rgb(34, 32, 32);
+    border: 1px solid rgb(34, 32, 32);
+}
 /* ---------------------- */
 /* ---- FOOTER ---- */
 
@@ -167,7 +192,43 @@ footer section article ul li a,
 footer section article ul li{
     color: #fff;
 }
+/* CONDICIONES */
+/* Condiciones PRODUCTOS */
+@media screen and (max-width:400px) {
+    /* Condiciones PRODUCTOS */
+    .filtro{
+        width: 90%;
+        border-right: 1px solid rgb(199, 199, 199);
+    }
 
+    .articulos {
+        width: 90%;
+    }
+
+    .articulos section{
+        justify-content: center;
+    }
+
+    header ul {
+        margin-top: 10px;
+        height: 5px;
+    }
+    /* Condiciones INICIO */
+
+    .w-100 {
+        height: 500px;
+    }
+
+    .politicas {
+        display: none;
+    }
+
+    .formulario,
+    .formulario input {
+        width: 100%;
+    }
+}
+/* ----------- */
 
 /* ---------------- */
 /* *{
