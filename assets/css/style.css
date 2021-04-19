@@ -153,6 +153,14 @@ button {
     border: 1px solid rgb(34, 32, 32);
 }
 /* ---------------------- */
+
+/* Registrar */
+.imagen-login {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+/* ---------------- */
 /* ---- FOOTER ---- */
 
 footer {
@@ -227,6 +235,10 @@ footer section article ul li{
     .formulario input {
         width: 100%;
     }
+
+    /* .formulario form img {
+        width: 280px;
+    } */
 }
 /* ----------- */
 
