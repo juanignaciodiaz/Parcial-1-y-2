@@ -7,8 +7,7 @@ ul {
     list-style: none;
 }
 
-main {
-    height: 100%;
+main { 
     background-color: rgb(238, 238, 238);
 }
 
@@ -26,7 +25,6 @@ header .logo-titulo {
     display: flex;
     align-items: center;
     color: #fff;
-    /* font-family: ; */
 }
 
 .logo-titulo h1 {
@@ -89,7 +87,10 @@ header ul li a:hover {
     display: block;
 }
 
-
+.inicio-h3{
+    text-align: center;
+    margin-top: 3%;
+}
 .articulos {
     width: 75%;
     border: 1px solid rgb(199, 199, 199);
@@ -97,13 +98,29 @@ header ul li a:hover {
     box-sizing: border-box;
     padding: 20px;
     padding-right: 10px;
-    
-
 }
 
 .articulos section {
     display: flex;
     flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+/* .cartas{
+    
+    
+
+} */
+
+.cartas{
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+
     justify-content: flex-start;
 }
 .articulos section article {
@@ -151,6 +168,61 @@ button {
     background-color: #28a745;
     color: rgb(34, 32, 32);
     border: 1px solid rgb(34, 32, 32);
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.titulocartas{
+    text-align: center;
+    height: 40px;
+}
+
+.cartas article img{
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+.cartas2{
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.cartas2 article img{
+    width: 100px;
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+
+.cartas3{
+    border: 5px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.cartas3 article img{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+
+
+.precioo1c{
+    color: gray;
+    font-size: 20px;
+}
+
+.ofertareal{
+    color: red;
+    font-size: 25px;
 }
 /* ---------------------- */
 
@@ -161,6 +233,55 @@ button {
     margin: auto;
 }
 /* ---------------- */
+
+/* PAGINA CONTACTO */
+.contenidoContacto{
+    /* padding: 30px; */
+    border: 1px solid rgb(199, 199, 199);
+    background: white; 
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+
+} 
+
+.contac img{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+
+
+.Contac{ 
+    padding: 15px;
+    background:white; 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contac article{
+    width: 30%;
+    
+}
+
+.Contac p{
+    font-family: inherit;
+    /* border: 1px red solid ; */
+    font-size: 20px;
+    
+}
+
+section h2{
+    margin-top: 50px ;
+    
+}
+
+
+.contac article p {
+    font-size: 15px;
+}
+/* ================== */
 /* ---- FOOTER ---- */
 
 footer {
@@ -213,6 +334,7 @@ footer section article ul li{
         width: 90%;
     }
 
+
     .articulos section{
         justify-content: center;
     }
@@ -242,121 +364,11 @@ footer section article ul li{
 }
 /* ----------- */
 
+footer section article ul li a :hover,
+footer section article ul li :hover{
+    color:cornflowerblue;
+    text-decoration: none;
+} 
+
 /* ---------------- */
-/* *{
-    margin: 0px;
-    padding: 0px;
-    font-family:'oswald' ;
-    text-align: center;
-}
 
-body{
-    background-color: #F7F7F7;
-}
-h1{
-    text-align:center;
-    color: rgb(255, 255, 255);
-}
-
-
-
-p{
-    color: rgb(255, 255, 255);
-}
-
-header img{
-    height: 160px;
-    position: absolute;
-    top: 0px;
-    left: 50px;
-    display: block;
-}
-
-header{
-    background-color: #BC0000;
-    height: 145px;
-    margin-top: 0px;
-    padding-top: 50px ;
-}
-
-header ul{
-    position: absolute;
-    right: 100px;
-    list-style: none;
-    top: 50px;
-}
-
-header ul li a{
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: 20px;
-}
-
-header ul li a :hover{
-    color: seagreen;
-    text-decoration: none;
-}
-
-.navbar{
-    margin-bottom: 25px;
-    } */
-
-
-
-    .contac{
-        height: 100%; 
-        /* border: 5px red solid;  */
-        margin: 50px;
-    }
-
-    
-    
-    .contac p{
-        font-family: inherit;
-        /* border: 1px red solid ; */
-        font-size: 20px;
-        
-    }
-    
-    section h2{
-        margin-top: 50px ;
-     
-    }
-    
-    .nido{
-        margin-top: 50px;
-    }
-
-    .nido img{
-        border: 3px red solid;
-        
-    }
-
-    .nido text{
-        margin: 20px;
-        right: 2323px;
-    }
-
-    .carozzi{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -180px;
-        
-    }
-
-    .carozzi img{
-        border: 3px red solid;
-    }
-
-    .sprunk{
-        display: flex;
-        flex-direction: row-reverse;
-        margin-top:  -155px;
-        
-    }
-
-    .sprunk img{
-        border: 3px red solid;
-
-    }
