@@ -11,7 +11,12 @@
         '/comentarios': {
             archivo: 'comentarios.html',
             titulo: 'Comentarios'
+        },
+        '/contacto' : {
+            archivo: 'contacto.html',
+            titulo: 'Contacto'
         }
+
     }
 
     const productos = [];

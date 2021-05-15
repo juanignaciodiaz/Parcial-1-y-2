@@ -244,27 +244,27 @@ button {
 
 } 
 
-.contac img{
+.contac  img{
     width: 150px;
     display: block;
     margin: auto;
 }
 
 
-.Contac{ 
+.contac{ 
     padding: 15px;
     background:white; 
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .contac article{
-    width: 30%;
+    width: 25%;
     
 }
 
-.Contac p{
+.contac p{
     font-family: inherit;
     /* border: 1px red solid ; */
     font-size: 20px;
@@ -491,6 +491,19 @@ footer section article ul li :hover{
         margin-top: 20px;
         padding-left: 25px;
         clear: both;
+    }
+
+    .contenidoContacto{
+        width: 85%;
+    }
+
+    .contac article{
+        flex-direction:column;
+        /* display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; */
+        width: 80%;
+        
     }
 
     /* .formulario form img {
