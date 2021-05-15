@@ -1,6 +1,6 @@
 (function (d, w) {
     const rutas = {
-        '/':{
+        '/': {
             archivo: 'index.html',
             titulo: 'Principal'
         },
@@ -17,16 +17,16 @@
     const productos = [];
     d.addEventListener('readystatechange', function () {
         if (d.readyState === 'interactive') {
-            console.log('Hola'); 
+            console.log('Hola');
             iniciar();
-            
+
         }
     });
 
     function iniciar() {
-        w.addEventListener('hashchange', function(){
+        w.addEventListener('hashchange', function () {
             const ruta = w.location.hash;
-    
+
             cargarPagina(ruta);
             console.log(ruta);
         });
@@ -36,11 +36,11 @@
     function cargarPagina(r) {
         const ruta = rutas[r.substring(1)];
 
-        fetch(`${w.location.origin}/assets/pages/${ruta.archivo}`,{
+        fetch(`${w.location.origin}/assets/pages/${ruta.archivo}`, {
             method: 'GET'
-        }).then(function(respuesta){
+        }).then(function (respuesta) {
             return respuesta.text();
-        }).then(function(respuesta) {
+        }).then(function (respuesta) {
             const contenedor = d.getElementById('contenido-pagina');
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
