@@ -446,6 +446,11 @@ footer section article ul li :hover{
     border-radius: 0 0 5px 5px;
 }
 
+.comment-buttom {
+    display: flex;
+    justify-content: left;
+}
+
 /* CONDICIONES */
 /* Condiciones PRODUCTOS */
 @media screen and (max-width:400px) {
