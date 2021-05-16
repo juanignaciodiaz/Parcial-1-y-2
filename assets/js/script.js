@@ -12,7 +12,10 @@
             archivo: 'comentarios.html',
             titulo: 'Comentarios'
         },
-
+        '/Prueba': {
+            archivo: 'paginaprueba.html',
+            titulo: 'Pagina prueba'
+        }
     }
 
     const productos = [];
@@ -48,7 +51,6 @@
             d.title = ruta.titulo;
             console.log(respuesta);
         });
-
         // console.log(`${w.location.origin}/assets/pages/${ruta.archivo}`);
     }
 })(document, window);
