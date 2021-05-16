@@ -50,4 +50,7 @@
 
         // console.log(`${w.location.origin}/assets/pages/${ruta.archivo}`);
     }
+
+    // Funciones de la página comentarios
+
 })(document, window);
