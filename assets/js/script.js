@@ -1,7 +1,7 @@
 (function (d, w) {
     const rutas = {
-        '/': {
-            archivo: 'index.html',
+        '': {
+            archivo: 'principal.html',
             titulo: 'Principal'
         },
         '/productos': {
@@ -11,7 +11,8 @@
         '/comentarios': {
             archivo: 'comentarios.html',
             titulo: 'Comentarios'
-        }
+        },
+
     }
 
     const productos = [];
