@@ -285,7 +285,7 @@ section h2{
 
 footer {
     /* margin: auto; */
-    margin-top: 10px;
+    margin-top: 5rem;
     padding-top: 2%;
     background-color: #BC0000;
     width: 100%;
@@ -329,7 +329,32 @@ footer section article ul li :hover{
 
 /* ---------------- */
     /*--- Estilo de Comentarios ---*/
+.public-comment {
+    background-color: white;
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
 
+.public-box .comment-content {
+    padding-bottom: 0px;
+    overflow: hidden;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.public-box .comment-content textarea {
+    padding: 1.65rem;
+}
+
+.comment-buttom {
+    text-align: right;
+}
+
+/* No cambiar */
 .comments-container {
     margin: 60px auto 20px;
     width: 50%;
@@ -446,10 +471,7 @@ footer section article ul li :hover{
     border-radius: 0 0 5px 5px;
 }
 
-.comment-buttom {
-    display: flex;
-    justify-content: left;
-}
+
 
 /* CONDICIONES */
 /* Condiciones PRODUCTOS */
