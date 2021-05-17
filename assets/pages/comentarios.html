@@ -2,25 +2,25 @@
   <article>
     <div class="comments-container">
       <h2>Comentarios</h2>
-      <p>Por favor
+      <p class="condition-user">Por favor
         <a href="assets/paginas/inicio_sesion.html">Inicia Sesión</a> o
         <a href="assets/paginas/registrar.html">Regístrate</a> para comentar
       </p>
       <ul id="comments-list" class="comments-list">
 
         <!-- Caja de comentarios -->
-        <form class="public-comment">
+        <form class="public-comment" id="public-comment">
           <div class="comment-avatar">
             <img src="assets/images/avatar/default_avatar.jpg">
           </div>
           <div class="public-box">
             <div class="comment-content">
-              <textarea placeholder="Agregar comentario..." required maxlength="199" minlength="1"
+              <textarea name="comentario" placeholder="Agregar comentario..." required maxlength="199" minlength="1"
                 class="form-control"></textarea>
             </div>
           </div>
           <div class="comment-buttom">
-            <input type="submit" id="btnPublicar" class="public-button" value="Publicar"/>
+            <button type="submit" id="btnPublicar" class="public-button">Publicar</button>
           </div>
         </form>
 
