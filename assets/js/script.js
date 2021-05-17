@@ -47,11 +47,11 @@
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
             d.title = ruta.titulo;
-            
+
             if (w.location.hash == '#/comentarios') {
                 formulario = contenedor.getElementsByTagName('form')[0];
                 let contenido_lista = contenedor.querySelector('main section article div ul');
-                formulario.addEventListener('submit', function(e) {
+                formulario.addEventListener('submit', function (e) {
                     console.log(contenido_lista);
                     e.preventDefault();
 
@@ -68,13 +68,13 @@
     // Funciones de la página comentarios
 
     function crearComentario(formComentarios, contenido) {
-        
+
         const lista = d.createElement('li');
         lista.setAttribute('class', 'comments-list');
 
         const comment_main_level = d.createElement('div');
         comment_main_level.setAttribute('class', 'comment-main-level');
-    
+
         const comment_avatar = d.createElement('div');
         comment_avatar.setAttribute('class', 'comment-avatar');
         comment_main_level.appendChild(comment_avatar);
@@ -95,10 +95,11 @@
         comment_name.setAttribute('class', 'comment-name');
         comment_name.innerText = 'Test1';
         comment_head.appendChild(comment_name);
-        
-        
+
+
         const comment_date = d.createElement('span');
-        comment_date.innerText = 'Hace una hora';
+        comment_date.setAttribute('id', 'comment-date');
+        comment_date.innerText = 'Hace un momento';
         comment_head.appendChild(comment_date);
 
         const comment_icon_like = d.createElement('i');
