@@ -162,7 +162,8 @@ input {
     margin-bottom: 10px;
 }
 
-button {
+button,
+.public-button {
     padding: 5px 10px;
     background-color: #28a745;
     color: rgb(34, 32, 32);
@@ -331,7 +332,7 @@ footer section article ul li :hover{
     /*--- Estilo de Comentarios ---*/
 .public-comment {
     background-color: white;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
     margin-bottom: 3.65rem;
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
@@ -352,6 +353,10 @@ footer section article ul li :hover{
 
 .comment-buttom {
     text-align: right;
+}
+
+.public-button {
+    width: 5rem;
 }
 
 .comments-container {
