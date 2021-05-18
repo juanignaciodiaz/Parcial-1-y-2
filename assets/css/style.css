@@ -20,6 +20,15 @@ header {
     align-items: center;
 }
 
+.hora {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
 header .logo-titulo {
     display: flex;
     align-items: center;
@@ -42,6 +51,7 @@ header ul {
 
 header ul li {
     margin-right: 15px;
+    color: #fff;
 }
 header ul li a {
     text-decoration: none;
@@ -52,6 +62,13 @@ header ul li a:hover {
     text-decoration: none;
     color: #F57C00;
     transition: all 300ms;
+}
+
+.listaRedes {
+    width:16%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 /* --------------------- */
 /* Producto */
@@ -285,7 +302,7 @@ section h2{
 
 footer {
     /* margin: auto; */
-    margin-top: 10px;
+    margin-top: 5rem;
     padding-top: 2%;
     background-color: #BC0000;
     width: 100%;
@@ -329,7 +346,32 @@ footer section article ul li :hover{
 
 /* ---------------- */
     /*--- Estilo de Comentarios ---*/
+.public-comment {
+    background-color: white;
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
 
+.public-box .comment-content {
+    padding-bottom: 0px;
+    overflow: hidden;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.public-box .comment-content textarea {
+    padding: 1.65rem;
+}
+
+.comment-buttom {
+    text-align: right;
+}
+
+/* No cambiar */
 .comments-container {
     margin: 60px auto 20px;
     width: 50%;
@@ -445,6 +487,8 @@ footer section article ul li :hover{
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
 }
+
+
 
 /* CONDICIONES */
 /* Condiciones PRODUCTOS */

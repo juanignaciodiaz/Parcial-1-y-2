@@ -1,0 +1,72 @@
+<section class="row">
+    <article class="col-md-12">
+        <h2>Ingrese sus datos</h2>
+        <form>
+            <section class="container-fluid">
+                <article class="col-12">
+                    <div class="form-group">
+                        <label for="nombre">Ingrese nombre</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            class="form-control"
+                            name="nombre"
+                            required
+                            minlength="1"
+                            maxlength="15"
+                        />
+                    </div>
+                </article>
+                <article class="col-12">
+                    <div class="form-group">
+                        <label for="apellido">Ingrese apellido</label>
+                        <input
+                            type="text"
+                            id="apellido"
+                            class="form-control"
+                            name="apellido"
+                            required									
+                            minlength="1"
+                            maxlength="15"
+                        />
+                    </div>
+                    <article class="col-12">
+                        <div class="form-group">
+                            <label for="rut">Ingrese Rut</label>
+                            <input
+                                type="text"
+                                id="rut"
+                                class="form-control"
+                                name="rut"
+                                required
+                                minlength="1"
+                                maxlength="15"
+                            />
+                        </div>
+                    </article>
+                </article>
+                <article class="col-12">
+                    <div class="form-group">
+                        <input
+                            type="submit"
+                            class="btn btn-block btn-success"
+                            value="Registrar"
+                        />
+                    </div>
+                </article>
+            </section>
+        </form>
+    </article>
+    <article class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Rut</th>
+                </tr>
+            </thead>
+            <tbody id="contenido"></tbody>
+        </table>
+    </article>
+</section>
