@@ -25,7 +25,6 @@
         if (d.readyState === 'interactive') {
             console.log('Hola');
             iniciar();
-            
 
         }
     });
