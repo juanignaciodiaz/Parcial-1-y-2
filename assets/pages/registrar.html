@@ -1,9 +1,7 @@
 <section class="container contenido-registrarse">
-  <section class="col-sm-12 d-flex flex-wrap">
+  <form id="formulario-registro" class="col-sm-12 d-flex flex-wrap justify-content-center" >
 
     <article class="formulario">
-      <form id="formulario-registro">
-
         <label>Nombre de usuario:</label>
         <input id="regUsuario" name="regUsuario" type="text" autocomplete="off" required>
 
@@ -22,22 +20,13 @@
         <label>Fecha de nacimiento:</label>
         <input id="fechaN" name="fechaN" type="date" autocomplete="off" required>
 
-        <button type="submit">Registrarse</button>
-      </form>
-    </article>
-    <article class="politicas">
-      <h3>Politicas</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus fugiat voluptate nesciunt quia magnam tenetur
-        dolorem quae animi quidem. Officiis, aperiam! Tempore cumque recusandae enim sapiente maxime, asperiores nostrum
-        rerum ab adipisci officia voluptate beatae impedit repellat totam id quam quidem! Unde excepturi dolorem vero
-        qui placeat consequuntur, est nemo?</p>
-      <h3>Lorem</h3>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore enim eaque saepe cumque suscipit, aperiam
-        quam vero velit ut officiis delectus assumenda consectetur reiciendis laboriosam dolorum a hic fuga ratione
-        asperiores minima! Eveniet temporibus rem consequatur, sapiente expedita, fuga vel quod hic aut incidunt
-        perferendis laborum sint distinctio laudantium laboriosam.</p>
-    </article>
+      </article>
+      <article class="regFotos">
+        <img src="assets/images/foto-incognito.jpg" alt="">
+        <input id="regUrlImagen" class="regUrlImagen" name="regUrlImagen" type="text" placeholder="Url foto de perfil">
+      </article>
+      <button name="regGuardar" class="regGuardar" id="regGuardar" type="submit">Registrarse</button>
 
-  </section>
+  </form>
 </section>
 <!-- <script src=".. /js/registrar.js"></script> -->

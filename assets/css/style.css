@@ -152,10 +152,15 @@ header ul li a:hover {
     margin-top: 10px;
 }
 
-.politicas,
+.regFotos,
 .formulario {
     width: 50%;
 
+}
+.regUrlImagen {
+    display: block;
+    margin: auto;
+    
 }
 input {
     width: 90%;
@@ -230,6 +235,18 @@ button {
     width: 50%;
     display: block;
     margin: auto;
+}
+
+.regFotos img {
+    display: block;
+    margin: 3rem auto;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.regGuardar {
+    width: 50%;
 }
 /* ---------------- */
 
@@ -474,8 +491,13 @@ footer section article ul li :hover{
         height: 500px;
     }
 
-    .politicas {
-        display: none;
+    .regFotos {
+        width: 100%;
+    }
+
+    .regFotos img {
+        width: 200px;
+        height: 200px;
     }
 
     .formulario,
