@@ -43,7 +43,7 @@
             cargarPagina(ruta);
 
             if (ruta == '#/registrar') {
-                console.log(formulario);
+                // console.log(formulario);
             }
         });
         cargarPagina(w.location.hash);
@@ -109,46 +109,151 @@
         const contrasenia = user.regCon.value;
         const rep_contrasenia = user.regRepCon.value;
         const fecha_nac = user.fechaN.value;
+        const foto_perfil = user.regUrlImagen.value;
 
-        let usuario = {
-            nomUsuario: regUsuario,
-            nombre: nombre,
-            correo: correo,
-            contrasenia: contrasenia,
-            fecha_nac: fecha_nac
+        // console.log(usuario);
+        if (validarNuevoUsuario(user) && valUsuarioExiste(user)) {
+            let usuario = {
+                nomUsuario: regUsuario,
+                nombre: nombre,
+                correo: correo,
+                contrasenia: contrasenia,
+                fecha_nac: fecha_nac,
+                foto: foto_perfil
+            }
+            usuariosLocalStorageLista(usuario);
+
         }
-        console.log(usuario);
-        // if (validarNuevoUsuario(usuario)) {
-        usuariosLocalStorageLista(usuario);
-
-        // }
-        console.log(usuario.nombre);
+        // console.log(usuario.nombre);
         console.log(usuarios);
     }
+    //  VALIDACIONES REGISTRO
     function validarNuevoUsuario(usuario) {
         let user = '';
         let confirmacion = false;
-        if (usuario.nomUsuario.length <= 4) {
+        if (usuario.regUsuario.value.length <= 4) {
             alert('Usuario');
-
+            confirmacion = false;
+        } else {
+            confirmacion = true;
         }
-        if (usuario.nombre.length <= 4) {
+        
+        if (usuario.regNombre.value.length <= 4) {
             alert('Nombre');
+            confirmacion = false;
+        } else {
+            confirmacion = true;
         }
 
-        if (usuario.correo.length <= 4) {
-            alert('Correo');
+        if (validarCorreo(usuario.regCorreo.value)){
+            confirmacion = true;
+        } else {
+            confirmacion = false;
+        }
+    
+
+        if (usuario.regCon.value.length <= 4) {
+            alert('Contrasenia');
+            confirmacion = false;
+        } else {
+            confirmacion = true;
         }
 
-        if (usuario.contrasenia.length <= 4) {
+        if (usuario.regRepCon.value != usuario.regCon.value) {
+            alert('Contraseña no es igual');
+            confirmacion = false;
+        } else {
+            confirmacion = true;
+        }
 
+        if (validarFecha(usuario.fechaN.value)) {
+            confirmacion = true;
+        } else {
+            confirmacion = false;
+        }
+
+        if (validarImagen(usuario.regUrlImagen.value)){
+            confirmacion = true;
+        } else {
+            confirmacion = false;
         }
 
 
-        user = usuario
+        // user = usuario;
 
-        return user;
+        return confirmacion;
     }
+    function validarFecha(fecha) {
+        let val = false;
+        let fecha_partes = fecha.split('-');
+        let anio = parseInt(fecha_partes[0]);
+        let mes = parseInt(fecha_partes[1]);
+        let dia = parseInt(fecha_partes[2]);
+
+        if (anio <= 1920) {
+            alert('Año de nacimiento no valido');
+        } else {
+            val = true;
+        }
+
+        return val;
+    }
+    
+    function validarCorreo(valor){
+        re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+        let v = false;
+        if(!re.exec(valor)){
+
+            alert('email no válido');
+        }
+        else {
+            alert('email válido');
+            v = true;
+        }
+
+        return v;
+    }
+
+    function validarImagen(urlI) {
+        let val = false;
+        for(let i = 0; i <= urlI.length ; i++){
+            if (urlI[i] == '.') {
+                let tipo_archivo = urlI.slice(i);
+                if (tipo_archivo == '.jpg' || tipo_archivo == '.jpeg' || tipo_archivo == '.gif') {
+                    val = true;
+                }
+            }
+        }
+        return val;
+    }
+
+    function valUsuarioExiste(user) {
+        let val = true;
+        for (let i = 0; i <= usuarios.length; i++) {
+
+            if (usuarios.length != 0) {
+                
+                if (user.regUsuario.value == usuarios[i].nomUsuario) {
+                    alert('Nombre de usuario ya existe');
+                    val = false;
+                } else {
+                    val = true;
+                }
+                
+                if (user.regCorreo.value == usuarios[i].correo) {
+                    alert('El correo ya existe');
+                    val = false;
+                } else {
+                    val = true;
+                }
+            }
+        }
+
+        return val;
+    }
+
+    // FIN VALIDACIONES REGISTRO
+
 
     function cargarUsuarios() {
         let retorno = []
