@@ -18,14 +18,25 @@
         }
     }
 
-    setInterval(function(){mostrarhora()}, 1000);
+    const divisa = d.getElementById('cambioDivisa');
+
+
+    async function apiDolar() {
+        const peticion = await fetch('https://mindicador.cl/api/dolar', {
+            method: 'GET'
+        });
+        const json = await peticion.json();
+        divisa.value = json.serie[0].valor;
+    }
+
+    setInterval(function () { mostrarhora() }, 1000);
 
     const productos = [];
     d.addEventListener('readystatechange', function () {
         if (d.readyState === 'interactive') {
             console.log('Hola');
             iniciar();
-
+            apiDolar();
         }
     });
 
@@ -51,19 +62,18 @@
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
             d.title = ruta.titulo;
-            console.log(respuesta);
         });
         // console.log(`${w.location.origin}/assets/pages/${ruta.archivo}`);
     }
-    function mostrarhora(){
+    function mostrarhora() {
         let momentoActual = new Date();
         let hora = momentoActual.getHours();
         let minuto = momentoActual.getMinutes();
         let segundo = momentoActual.getSeconds();
-    
+
         let horaImprimible = hora + ":" + minuto + ":" + segundo;
-    
+
         const contenido_hora = document.getElementById('mostrarhora');
-        contenido_hora.innerText = horaImprimible ;
+        contenido_hora.innerText = horaImprimible;
     }
 })(document, window);

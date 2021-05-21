@@ -21,7 +21,16 @@ header {
 }
 
 .hora {
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.cambiodivisa {
+    width: 50%;
     margin: 0 auto;
     font-size: 24px;
     color: #fff;
@@ -46,9 +55,25 @@ header .logo-titulo {
 header ul {
     display: flex;
     list-style: none;
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 16%;
 }
 
+.lista-hora {
+    width: 100%;
+    display: flex;
+
+}
+
+.lista-hora p {
+    margin: auto;
+    /* text-align: right; */
+    width: 45%;
+    display: block;
+    text-align: right;
+}
 header ul li {
     margin-right: 15px;
     color: #fff;
