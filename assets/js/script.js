@@ -101,29 +101,31 @@
         localStorage.setItem('personas', JSON.stringify(datosUsuario));
     }
 
-    function anadirElementoATabla(hijoAAnadir) {
+
+    function anadirElementoATabla(contenidoTabla) {
         const trTemporal = document.createElement('tr');
+        
 
         const tdRut = document.createElement('td');
-        tdRut.innerText = hijoAAnadir.rut;
+        tdRut.innerText = contenidoTabla.rut;
 
         const tdNombre = document.createElement('td');
-        tdNombre.innerText = hijoAAnadir.nombre;
+        tdNombre.innerText = contenidoTabla.nombre;
 
         const tdApellido = document.createElement('td');
-        tdApellido.innerText = hijoAAnadir.apellido;
+        tdApellido.innerText = contenidoTabla.apellido;
 
         const tdTelefono = document.createElement('td');
-        tdTelefono.innerText = hijoAAnadir.telefono;
+        tdTelefono.innerText = contenidoTabla.telefono;
 
         const tdCorreoelectronico = document.createElement('td');
-        tdCorreoelectronico.innerText = hijoAAnadir.correoelectronico;
+        tdCorreoelectronico.innerText = contenidoTabla.correoelectronico;
 
         const tdCargo = document.createElement('td');
 
-        tdCargo.innerText= hijoAAnadir.cargo;
+        tdCargo.innerText= contenidoTabla.cargo;
         tdCargo.addEventListener('click', function() {
-            console.log('oprimido :', hijoAAnadir.cargo);
+            console.log('oprimido :', contenidoTabla.cargo);
 
         });
 
@@ -150,5 +152,5 @@
     });
 
 
-   
+
 }());
