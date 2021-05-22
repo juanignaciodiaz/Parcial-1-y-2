@@ -18,16 +18,20 @@
         }
     }
 
-    const divisa = d.getElementById('cambioDivisa');
 
+    const url = 'https://mindicador.cl/api/dolar'
+    fetch (url)
+    .then(response => response.json())
+    .then(data => {
+        let element = document.getElementById('cambioDivisa')
+        element.innerHTML = ` 
+        <p>${data.nombre}</p>
+        <p>${data.serie[0].valor}</p>
+         `
+        console.log(data)
+    })
+    .catch(err=>console.log(err))
 
-    async function apiDolar() {
-        const peticion = await fetch('https://mindicador.cl/api/dolar', {
-            method: 'GET'
-        });
-        const json = await peticion.json();
-        divisa.value = json.serie[0].valor;
-    }
 
     setInterval(function () { mostrarhora() }, 1000);
 
@@ -36,7 +40,6 @@
         if (d.readyState === 'interactive') {
             console.log('Hola');
             iniciar();
-            apiDolar();
         }
     });
 
