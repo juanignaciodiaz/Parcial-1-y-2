@@ -1,5 +1,9 @@
 (function (d, w) {
     // VARIABLES
+
+    //  usuario registrado
+    let usuario_log = {};
+    // -------------------
     let idU = 0;
     let idP = 0;
     const contenedor = d.getElementById('contenido-pagina');
@@ -20,6 +24,10 @@
         '/registrar': {
             archivo: 'registrar.html',
             titulo: 'Registrarse'
+        },
+        '/inicio_sesion': {
+            archivo: 'inicio_sesion.html',
+            titulo: 'Inicio Sesión'
         }
     }
 
@@ -31,7 +39,8 @@
     d.addEventListener('readystatechange', function () {
         if (d.readyState === 'interactive') {
             iniciar();
-
+            usuarioVacio();
+            
         }
     });
 
@@ -41,10 +50,7 @@
         w.addEventListener('hashchange', function () {
             const ruta = w.location.hash;
             cargarPagina(ruta);
-
-            if (ruta == '#/registrar') {
-                // console.log(formulario);
-            }
+            validarUsuarioIniciado();
         });
         cargarPagina(w.location.hash);
 
@@ -84,7 +90,15 @@
                 })
             }
 
+            if (w.location.hash == '#/inicio_sesion') {
+                formulario = contenedor.getElementsByTagName('form')[0];
+                formulario.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    iniciarSesion(formulario);
+                    console.log('evento login');
 
+                })
+            }
 
         });
     }
@@ -95,14 +109,21 @@
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
         idU++;
     }
+
+    function iniciarSesionLocalStorageLista(usuario) {
+        usuario_log = usuario;
+        localStorage.setItem('usuario_iniciado', JSON.stringify(usuario));
+    }
+
     function productosLocalStorageLista(producto) {
         productos.push(producto);
         localStorage.setItem('productos', JSON.stringify(productos));
     }
 
+
     // FUNCIONES
     function crearUsuario(user) {
-        
+
         const regUsuario = user.regUsuario.value;
         const nombre = user.regNombre.value;
         const correo = user.regCorreo.value;
@@ -111,18 +132,18 @@
         const fecha_nac = user.fechaN.value;
         const foto_perfil = user.regUrlImagen.value;
 
-        // console.log(usuario);
-        if (validarNuevoUsuario(user) && valUsuarioExiste(user)) {
+        console.log(regUsuario);
+        if (validarNuevoUsuario(user)) {
             let usuario = {
-                nomUsuario: regUsuario,
+                usuario_nombre: regUsuario,
                 nombre: nombre,
                 correo: correo,
                 contrasenia: contrasenia,
                 fecha_nac: fecha_nac,
                 foto: foto_perfil
             }
+            // console.log(usuario.usuario_nombre);
             usuariosLocalStorageLista(usuario);
-
         }
         // console.log(usuario.nombre);
         console.log(usuarios);
@@ -137,7 +158,7 @@
         } else {
             confirmacion = true;
         }
-        
+
         if (usuario.regNombre.value.length <= 4) {
             alert('Nombre');
             confirmacion = false;
@@ -145,12 +166,12 @@
             confirmacion = true;
         }
 
-        if (validarCorreo(usuario.regCorreo.value)){
+        if (validarCorreo(usuario.regCorreo.value)) {
             confirmacion = true;
         } else {
             confirmacion = false;
         }
-    
+
 
         if (usuario.regCon.value.length <= 4) {
             alert('Contrasenia');
@@ -172,7 +193,7 @@
             confirmacion = false;
         }
 
-        if (validarImagen(usuario.regUrlImagen.value)){
+        if (validarImagen(usuario.regUrlImagen.value)) {
             confirmacion = true;
         } else {
             confirmacion = false;
@@ -198,11 +219,11 @@
 
         return val;
     }
-    
-    function validarCorreo(valor){
-        re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+    function validarCorreo(valor) {
+        re = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
         let v = false;
-        if(!re.exec(valor)){
+        if (!re.exec(valor)) {
 
             alert('email no válido');
         }
@@ -216,7 +237,7 @@
 
     function validarImagen(urlI) {
         let val = false;
-        for(let i = 0; i <= urlI.length ; i++){
+        for (let i = 0; i <= urlI.length; i++) {
             if (urlI[i] == '.') {
                 let tipo_archivo = urlI.slice(i);
                 if (tipo_archivo == '.jpg' || tipo_archivo == '.jpeg' || tipo_archivo == '.gif') {
@@ -227,34 +248,107 @@
         return val;
     }
 
-    function valUsuarioExiste(user) {
-        let val = true;
-        for (let i = 0; i <= usuarios.length; i++) {
+    // function valUsuarioExiste(user) {
+    //     let val = true;
+    //     for (let i = 0; i <= usuarios.length; i++) {
+    //         console.log('antes');
+    //         if (usuarios.length != 0 && usuarios != '') {
+    //             console.log('despues');
 
-            if (usuarios.length != 0) {
-                
-                if (user.regUsuario.value == usuarios[i].nomUsuario) {
-                    alert('Nombre de usuario ya existe');
-                    val = false;
-                } else {
-                    val = true;
-                }
-                
-                if (user.regCorreo.value == usuarios[i].correo) {
-                    alert('El correo ya existe');
-                    val = false;
-                } else {
-                    val = true;
-                }
-            }
-        }
+    //             if (user.regUsuario.value == usuarios[i].usuario_nombre) {
+    //                 alert('Nombre de usuario ya existe');
+    //                 val = false;
+    //                 console.log('nombre : '+val);
+    //             } else {
+    //                 val = true;
+    //             }
 
-        return val;
-    }
+    //             if (user.regCorreo.value == usuarios[i].correo) {
+    //                 alert('El correo ya existe');
+    //                 val = false;
+    //                 console.log('correo : '+val);
+    //             } else {
+    //                 val = true;
+    //             }
+    //         }
+    //     }
+    //     return val;
+    // }
+    // function valUsuarioExiste(user) {
+    //     let val = true;
+
+    //     let nombre_existe = '';
+    //     let nombre_formulario = ''
+    //     for (let i = 0; i <= usuarios.length; i++) {
+    //         console.log(usuarios[i].usuario_nombre);
+    //         nombre_existe = usuarios[i].usuario_nombre;
+    //         nombre_formulario = user.regUsuario.name;
+
+    //         if (usuarios != '') {
+    //             console.log(usuarios);
+    //             console.log(i);
+    //             console.log(usuarios[1].correo);
+
+    //             if (nombre_formulario == nombre_existe) {
+    //                 alert('El correo ya existe');
+    //                 val = false;
+    //             } else {
+    //                 val = true;
+    //             }
+    //         }
+    //     }
+
+    //     return val;
+    // }
 
     // FIN VALIDACIONES REGISTRO
+    // INICIAR SESION
+    function iniciarSesion(usuario) {
+        let validacion = false;
+        for (const i in usuarios) {
 
+            if (usuarios[i].usuario_nombre == usuario.logUsuario.value) {
+                alert('Usuario existe')
+                validacion = true;
+            } else {
+                alert('No existe');
+                validacion = false;
+            }
 
+            if (usuarios[i].contrasenia == usuario.logContrasena.value) {
+                alert('Contraseña existe');
+                validacion = true;
+            } else {
+                alert('Contraseña no existe');
+                validacion = false;
+            }
+
+            if (validacion) {
+                console.log(usuarios[i]);
+                usuario_log = usuarios[i];
+                iniciarSesionLocalStorageLista(usuarios[i]);
+                break;
+            }
+        }
+    }
+
+    function usuarioVacio() {
+        if (usuario_log != null || usuario_log != '') {
+            let barra_ingreso = d.getElementsByTagName('ul')[0].children;
+
+            barra_ingreso[0].classList.toggle('bloqueada');
+        }
+    }
+    // FIN INCIAR SESION
+
+    function validarUsuarioIniciado() {
+        if (usuario_log.length >= 0) {
+            console.log('vacio');
+        } else {
+            console.log('Vacio?');
+            console.log(usuario_log.length);
+        }
+    }
     function cargarUsuarios() {
         let retorno = []
         if (localStorage.getItem('usuarios') != null) {

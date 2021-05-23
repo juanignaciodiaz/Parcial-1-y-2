@@ -20,6 +20,10 @@ header {
     align-items: center;
 }
 
+.cerrar-cuenta {
+    display: none;
+}
+
 header .logo-titulo {
     display: flex;
     align-items: center;
