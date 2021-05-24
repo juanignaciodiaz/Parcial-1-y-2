@@ -1,8 +1,9 @@
 * {
     padding: 0;
-    font-family:'oswald' ;
+    font-family:'oswald';
     margin: 0;
 }
+
 body {
     background-color: rgb(238, 238, 238);
 }
@@ -80,21 +81,40 @@ header ul li a:hover {
     min-height: 200px;
     box-sizing: border-box;
     max-height: 280px;
+    
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
-.filtro h3,
-.filtro>ul {
+.filtro article h3,
+.filtro > article >ul {
     margin: 10px;
 }
 
-.filtro ul li ul {
+.filtro article ul li ul {
     display: none;
     list-style: none;
     margin-left: 10px;
 }
 
-.filtro ul li ul:target {
+.filtro article ul li ul:target {
     display: block;
 }
+
+.espacio-boton-crear-producto {
+    text-align: center;
+}
+
+.espacio-boton-crear-producto p {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.espacio-boton-crear-producto p:hover {
+    color: #F57C00;
+    transition: all 200ms;
+}
+
 
 .inicio-h3{
     text-align: center;
@@ -471,6 +491,92 @@ footer section article ul li :hover{
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
+}
+
+/* PAGINA CREAR PRODUCTO */
+.contenido_pagina_crud_producto {
+    background-color: white;
+    width: 94%;
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid rgb(199, 199, 199);
+
+}
+
+
+.contenido_pagina_crud_producto form{
+    width: 96%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.contenido_pagina_crud_producto form section,
+.contenido_pagina_crud_producto form article{
+    width: 48%;
+    min-width: 560px;
+}
+
+
+.contenido_pagina_crud_producto form article input{
+    margin-bottom: 30px;
+}
+.contenido_pagina_crud_producto form article button{
+    margin-top: 20px;
+}
+.contenido_pagina_crud_producto form section input {
+    width: 100%;
+    margin-top: 50px;
+}
+.espacio-imagen-nuevo-producto{
+    width: 40%;
+    height: 70%;
+    margin: auto;
+}
+
+.contenido_pagina_crud_producto form section div img{
+    width: 190px;
+    height: 210px;
+    display: block;
+    margin: auto;
+}
+
+.contenido_pagina_crud_producto form article .crear-producto-precio{
+    width: 30%;
+}
+
+.contenido_pagina_crud_producto form article .crear-producto-descuento {
+    width: 20%;
+    margin-left: 10px;
+}
+.contenido_pagina_crud_producto form .contenido-crearPagina {
+    margin: 60px auto;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones button{
+    width: 40%;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones .btn-editar{
+    background-color: #ffc107;
+}
+
+.lista-productos h3 {
+    width: 100%;
+}
+
+.lista-productos {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pr-btnEditar {
+    width: 48%;
 }
 
 /* CONDICIONES */

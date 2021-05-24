@@ -28,10 +28,14 @@
         '/inicio_sesion': {
             archivo: 'inicio_sesion.html',
             titulo: 'Inicio Sesión'
+        },
+        '/crear_producto': {
+            archivo: 'crear_producto.html',
+            titulo: 'CRUD producto'
         }
     }
 
-    let productos = [];
+    let productos = cargarProductos();
 
     let usuarios = cargarUsuarios();
 
@@ -80,23 +84,50 @@
                     } else {
                         imagen.src = 'assets/images/foto-incognito.jpg';
                     }
-                })
+                });
 
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
 
                     crearUsuario(formulario)
-                })
-            }
-
-            if (w.location.hash == '#/inicio_sesion') {
+                });
+            } else if (w.location.hash == '#/inicio_sesion') {
                 formulario = contenedor.getElementsByTagName('form')[0];
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
                     iniciarSesion(formulario);
                     console.log('evento login');
 
-                })
+                });
+            } else if (w.location.hash == '#/productos') {
+                usuario_iniciado_producto();
+                pintarProductos();
+            } else if (w.location.hash == '#/crear_producto') {
+                let imagen = contenedor.getElementsByTagName('img')[0];
+                pintarProductosCRUD();
+
+                formulario = contenedor.getElementsByTagName('form')[0];
+
+                formulario.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (validarNuevoProducto(formulario)) {
+                        crearCartaProducto(formulario);
+
+                        let objeto_producto = {
+                            id: idP,
+                            nombre: formulario.titulo_producto.value,
+                            precio: formulario.precio_producto.value,
+                            t_producto: formulario.tipo_producto.value,
+                            imagen: formulario.imagen.value
+                        }
+
+                        productosLocalStorageLista(objeto_producto);
+                    }
+
+                });
+                formulario.imagen.addEventListener('input', function () {
+                    imagen.src = formulario.imagen.value;
+                });
             }
 
         });
@@ -117,6 +148,7 @@
     function productosLocalStorageLista(producto) {
         productos.push(producto);
         localStorage.setItem('productos', JSON.stringify(productos));
+        idP++;
     }
 
 
@@ -145,7 +177,7 @@
             usuariosLocalStorageLista(usuario);
         }
         // console.log(usuario.nombre);
-        console.log(usuarios);
+        // console.log(usuarios);
     }
     //  VALIDACIONES REGISTRO
     function validarNuevoUsuario(usuario) {
@@ -340,7 +372,7 @@
     //     }
     // }
     // FIN INCIAR SESION
-//  USUARIO INICIADO
+    //  USUARIO INICIADO
     function validarUsuarioIniciado() {
         let listaInicioRegistro = d.getElementsByClassName('lista-sesion');
         if (usuario_log.length != 0) {
@@ -360,12 +392,102 @@
     function cerrarSesion() {
         let botonSalir = d.getElementById('cerrar-cuenta');
 
-        botonSalir.addEventListener('click', function() {
+        botonSalir.addEventListener('click', function () {
             localStorage.setItem('usuario_iniciado', []);
             w.location.hash = '#/';
         });
     }
-// FIN USUARIO INICIADO
+    // FIN USUARIO INICIADO
+
+    // PAGINA PRODUCTOS
+    function usuario_iniciado_producto() {
+        let btn_redirigir_crear = contenedor.getElementsByClassName('crear-producto')[0];
+        if (usuario_log.length != 0) {
+            btn_redirigir_crear.style.display = 'block';
+
+            btn_redirigir_crear.addEventListener('click', function () {
+                w.location.hash = '#/crear_producto'
+            });
+        } else {
+            btn_redirigir_crear.style.display = 'none';
+
+        }
+
+    }
+
+
+    // FIN PAGINA PRODUCTOS
+    // PAGINA CREAR PRODUCTO
+    function crearCartaProducto(parametro) {
+        let contenedorGrande = contenedor.querySelector('section #lista-productos');
+
+        let contenedorCartaProducto = d.createElement('article');
+
+        let cartaProducto = d.createElement('section');
+        cartaProducto.setAttribute('class', 'card mb-1');
+        cartaProducto.setAttribute('style', 'width: 13rem;');
+        contenedorCartaProducto.appendChild(cartaProducto);
+
+        let imagenCarta = d.createElement('img');
+        imagenCarta.setAttribute('src', parametro.imagen.value);
+        imagenCarta.setAttribute('class', 'card-img-top');
+        cartaProducto.appendChild(imagenCarta);
+
+        let cuerpoCarta = d.createElement('article');
+        cuerpoCarta.setAttribute('class', 'card-body');
+        cartaProducto.appendChild(cuerpoCarta);
+
+        let tituloProducto = d.createElement('h5');
+        tituloProducto.setAttribute('class', 'card-title');
+        tituloProducto.innerText = parametro.titulo_producto.value;
+        cuerpoCarta.appendChild(tituloProducto);
+
+        let parrafoCarta = d.createElement('p');
+        parrafoCarta.setAttribute('class', 'card-text');
+        parrafoCarta.innerText = parametro.precio_producto.value;
+        cuerpoCarta.appendChild(parrafoCarta);
+
+        let btnEditar = d.createElement('button');
+        btnEditar.setAttribute('class', 'btn-success');
+        btnEditar.innerText = 'Editar';
+        cuerpoCarta.appendChild(btnEditar);
+
+        let btnEliminar = d.createElement('button');
+        btnEliminar.setAttribute('class', 'btn-danger');
+        btnEliminar.innerText = 'Eliminar';
+        cuerpoCarta.appendChild(btnEliminar);
+
+        contenedorGrande.appendChild(contenedorCartaProducto);
+
+    }
+
+    function validarNuevoProducto(parametro) {
+        let confirmacion = true;
+        if (parametro.titulo_producto.value.length <= 4) {
+            alert('Titulo producto');
+            confirmacion = false;
+        } else {
+            confirmacion = true;
+        }
+
+        if (parametro.tipo_producto.value == '') {
+            alert('No hay producto');
+            confirmacion = false;
+        } else {
+        }
+
+        console.log(confirmacion);
+        return confirmacion;
+    }
+
+    function cargarProductos() {
+        let retorno = [];
+        if (localStorage.getItem('productos') != null) {
+            retorno = JSON.parse(localStorage.getItem('productos'));
+        }
+        return retorno;
+    }
+    // FIN PAGINA CREAR PRODUCTOS
     function cargarUsuarios() {
         let retorno = []
         if (localStorage.getItem('usuarios') != null) {
@@ -384,6 +506,87 @@
     }
     // PRODUCTOS
     function pintarProductos() {
+        for (const i in productos) {
+            let contenedorGrande = contenedor.querySelector('#contenido-pagina section .articulos section');
 
+            let contenedorCartaProducto = d.createElement('article');
+
+            let cartaProducto = d.createElement('section');
+            cartaProducto.setAttribute('class', 'card mb-1');
+            cartaProducto.setAttribute('style', 'width: 13rem;');
+            contenedorCartaProducto.appendChild(cartaProducto);
+
+            let imagenCarta = d.createElement('img');
+            imagenCarta.setAttribute('src', productos[i].imagen);
+            imagenCarta.setAttribute('class', 'card-img-top');
+            cartaProducto.appendChild(imagenCarta);
+
+            let cuerpoCarta = d.createElement('article');
+            cuerpoCarta.setAttribute('class', 'card-body');
+            cartaProducto.appendChild(cuerpoCarta);
+
+            let tituloProducto = d.createElement('h5');
+            tituloProducto.setAttribute('class', 'card-title');
+            tituloProducto.innerText = productos[i].nombre;
+            cuerpoCarta.appendChild(tituloProducto);
+
+            let parrafoCarta = d.createElement('p');
+            parrafoCarta.setAttribute('class', 'card-text');
+            parrafoCarta.innerText = '$' + productos[i].precio;
+            cuerpoCarta.appendChild(parrafoCarta);
+
+            let btncomprar = d.createElement('a');
+            btncomprar.setAttribute('class', 'btn btn-primary');
+            btncomprar.innerText = 'Comprar';
+            cuerpoCarta.appendChild(btncomprar);
+
+            contenedorGrande.appendChild(contenedorCartaProducto);
+        }
+    }
+
+    function pintarProductosCRUD() {
+        for (const i in productos) {
+
+            let contenedorGrande = contenedor.querySelector('section #lista-productos');
+
+            let contenedorCartaProducto = d.createElement('article');
+            contenedorCartaProducto.setAttribute('class','mr-2')
+
+            let cartaProducto = d.createElement('section');
+            cartaProducto.setAttribute('class', 'card mb-1');
+            cartaProducto.setAttribute('style', 'width: 13rem;');
+            contenedorCartaProducto.appendChild(cartaProducto);
+
+            let imagenCarta = d.createElement('img');
+            imagenCarta.setAttribute('src', productos[i].imagen);
+            imagenCarta.setAttribute('class', 'card-img-top');
+            cartaProducto.appendChild(imagenCarta);
+
+            let cuerpoCarta = d.createElement('article');
+            cuerpoCarta.setAttribute('class', 'card-body');
+            cartaProducto.appendChild(cuerpoCarta);
+
+            let tituloProducto = d.createElement('h5');
+            tituloProducto.setAttribute('class', 'card-title');
+            tituloProducto.innerText = productos[i].nombre;
+            cuerpoCarta.appendChild(tituloProducto);
+
+            let parrafoCarta = d.createElement('p');
+            parrafoCarta.setAttribute('class', 'card-text');
+            parrafoCarta.innerText = '$' + productos[i].precio;
+            cuerpoCarta.appendChild(parrafoCarta);
+
+            let btnEditar = d.createElement('button');
+            btnEditar.setAttribute('class', 'btn-warning text-light mr-1 pr-btnEditar');
+            btnEditar.innerText = 'Editar';
+            cuerpoCarta.appendChild(btnEditar);
+
+            let btnEliminar = d.createElement('button');
+            btnEliminar.setAttribute('class', 'btn-danger pr-btnEditar');
+            btnEliminar.innerText = 'Eliminar';
+            cuerpoCarta.appendChild(btnEliminar);
+
+            contenedorGrande.appendChild(contenedorCartaProducto);
+        }
     }
 })(document, window);
