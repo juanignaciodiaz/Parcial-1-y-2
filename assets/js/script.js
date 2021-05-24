@@ -113,6 +113,9 @@
                 pintarProductosCRUD();
                 formulario = contenedor.getElementsByTagName('form')[0];
 
+                formulario.boton_editar.disabled = true;
+                formulario.boton_editar.style.opacity = '.6';
+
                 formulario.id_producto.value = idP;
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
@@ -496,15 +499,16 @@
     }
 
     function editarProducto(parametro, prodc){
-        let btnEditar = contenedor.querySelector('#contenido-pagina form a');
-        btnEditar.style.cursor = 'context-menu';
+        // let btnEditar = contenedor.querySelector('#contenido-pagina form a');
+        parametro.boton_editar.disabled = false;
+        parametro.boton_editar.style.opacity = '1';
         parametro.id_producto.value = prodc.id;
         parametro.titulo_producto.value = prodc.nombre;
         parametro.precio_producto.value = prodc.precio;
         parametro.tipo_producto.value = prodc.t_producto;
         parametro.imagen.value = prodc.imagen;
 
-        btnEditar.addEventListener('click', function() {
+        parametro.boton_editar.addEventListener('click', function() {
             for (const i in productos) {
                 if (prodc.id == productos[i].id) {
                     productos[i].nombre = parametro.titulo_producto.value; 
@@ -519,7 +523,10 @@
 
             formulario.reset();
             formulario.boton_guardar.disabled = false;
-            btnEditar.disabled = true;
+            formulario.boton_guardar.style.opacity = '1';
+
+            formulario.boton_editar.disabled = true;
+            formulario.boton_editar.style.opacity = '.6';
         })
 
 
@@ -619,6 +626,7 @@
             btnEditar.addEventListener('click', function(){
                 editarProducto(formulario, productos[i]);
                 formulario.boton_guardar.disabled=true;
+                formulario.boton_guardar.style.opacity = '.6';;
             })
             cuerpoCarta.appendChild(btnEditar);
 
