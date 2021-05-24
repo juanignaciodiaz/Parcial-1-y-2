@@ -279,6 +279,8 @@ section h2{
 .contac article p {
     font-size: 15px;
 }
+
+
 /* ================== */
 /* ---- FOOTER ---- */
 
@@ -501,8 +503,12 @@ footer section article ul li :hover{
         /* display: flex;
         justify-content: space-between;
         flex-wrap: wrap; */
-        width: 80%;
+        width: 110%;
         
+    }
+
+    .form-group{
+        height: 150%;
     }
 
     /* .formulario form img {
