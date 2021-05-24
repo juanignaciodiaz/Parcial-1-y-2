@@ -1,0 +1,50 @@
+<section class="contenido_pagina_crud_producto">
+    <form>
+        <article class="contenido-crearPagina">
+            <input type="number" name="id_producto" id="id_producto" disabled>
+            <input type="text" name="titulo_producto" placeholder="Titulo del producto">
+            
+            <input type="number" min="0" class="crear-producto-precio" name="precio_producto" placeholder="Precio del producto">
+            <input type="number" class="crear-producto-descuento" name="descuento_producto" id="descuento_producto" placeholder="Descuento" disabled>
+
+            <input name="tipo_producto" list="tipo-producto" placeholder="Tipo de producto" >
+
+            <datalist id="tipo-producto">
+                <option value="Leches">
+                <option value="Huevos">
+                <option value="Postres">
+
+                <option value="Abarrotes">
+                <option value="Conservas">
+                <option value="Salsas y condimentos">
+
+                <option value="Frutas">
+                <option value="Verduras">
+                <option value="Frutos secos">
+
+                <option value="Bebidas">
+
+                <option value="">
+            </datalist>
+
+            
+            
+            
+        </article>
+        <section>
+            <div class="espacio-imagen-nuevo-producto">
+                <img src="https://media.tenor.com/images/965beb93fefb499a174d45bfcef23c30/tenor.gif" alt="">
+            </div>
+            <input type="text" name="imagen" placeholder="Ingrese la url de la imagen">
+        </section>
+        <article class="contenido-crear-producto-botones">
+            
+            <button name="boton_guardar" type="submit" class="btn-agregar">Agrergar Producto</button>
+            <button type="button" name="boton_editar" id="agregar_producto" class="btn-editar btn-editar">Editar</button>
+        </article>
+    </form>
+
+    <article id="lista-productos" class="lista-productos">
+        <h3 class="mt-4">Productos</h3>
+    </article>
+</section>
