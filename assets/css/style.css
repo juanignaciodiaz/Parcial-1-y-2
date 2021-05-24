@@ -47,9 +47,15 @@ header ul {
 header ul li {
     margin-right: 15px;
 }
+
+.lista-cerrar-sesion,
 header ul li a {
     text-decoration: none;
     color: #fff;
+}
+
+.lista-cerrar-sesion {
+    cursor: pointer;
 }
 
 header ul li a:hover {

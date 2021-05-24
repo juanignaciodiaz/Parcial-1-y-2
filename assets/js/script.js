@@ -2,7 +2,7 @@
     // VARIABLES
 
     //  usuario registrado
-    let usuario_log = {};
+    let usuario_log = cargarUsuarioIniciado();
     // -------------------
     let idU = 0;
     let idP = 0;
@@ -10,7 +10,7 @@
     let formulario = '';
     const rutas = {
         '/': {
-            archivo: 'index.html',
+            archivo: 'principal.html',
             titulo: 'Principal'
         },
         '/productos': {
@@ -39,8 +39,8 @@
     d.addEventListener('readystatechange', function () {
         if (d.readyState === 'interactive') {
             iniciar();
-            usuarioVacio();
-            
+            // usuarioVacio();
+            validarUsuarioIniciado();
         }
     });
 
@@ -64,7 +64,6 @@
         }).then(function (respuesta) {
             return respuesta.text();
         }).then(function (respuesta) {
-
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
             d.title = ruta.titulo;
@@ -324,36 +323,63 @@
             }
 
             if (validacion) {
-                console.log(usuarios[i]);
+                // console.log(usuarios[i]);
                 usuario_log = usuarios[i];
                 iniciarSesionLocalStorageLista(usuarios[i]);
+                w.location.hash = '#/productos';
                 break;
             }
         }
     }
 
-    function usuarioVacio() {
-        if (usuario_log != null || usuario_log != '') {
-            let barra_ingreso = d.getElementsByTagName('ul')[0].children;
+    // function usuarioVacio() {
+    //     if (usuario_log.length != null || usuario_log != '') {
+    //         let barra_ingreso = d.getElementsByTagName('ul')[0].children;
 
-            barra_ingreso[0].classList.toggle('bloqueada');
-        }
-    }
+    //         barra_ingreso[0].classList.toggle('bloqueada');
+    //     }
+    // }
     // FIN INCIAR SESION
-
+//  USUARIO INICIADO
     function validarUsuarioIniciado() {
-        if (usuario_log.length >= 0) {
-            console.log('vacio');
+        let listaInicioRegistro = d.getElementsByClassName('lista-sesion');
+        if (usuario_log.length != 0) {
+            console.log(listaInicioRegistro);
+            console.log(listaInicioRegistro[0]);
+            listaInicioRegistro[0].style.display = 'none';
+            listaInicioRegistro[1].style.display = 'none';
+            listaInicioRegistro[2].style.display = 'block';
+
+            cerrarSesion();
+
         } else {
-            console.log('Vacio?');
-            console.log(usuario_log.length);
+            // console.log('Vacio?');
+            // console.log(usuario_log.length);
         }
     }
+    function cerrarSesion() {
+        let botonSalir = d.getElementById('cerrar-cuenta');
+
+        botonSalir.addEventListener('click', function() {
+            localStorage.setItem('usuario_iniciado', []);
+            w.location.hash = '#/';
+        });
+    }
+// FIN USUARIO INICIADO
     function cargarUsuarios() {
         let retorno = []
         if (localStorage.getItem('usuarios') != null) {
             retorno = JSON.parse(localStorage.getItem('usuarios'));
         }
+        return retorno;
+    }
+
+    function cargarUsuarioIniciado() {
+        let retorno = [];
+        if (localStorage.getItem('usuario_iniciado')) {
+            retorno = JSON.parse(localStorage.getItem('usuario_iniciado'));
+        }
+
         return retorno;
     }
     // PRODUCTOS
