@@ -129,7 +129,7 @@
                             t_producto: formulario.tipo_producto.value,
                             imagen: formulario.imagen.value
                         }
-                        
+
 
                         productosLocalStorageLista(objeto_producto);
                     }
@@ -498,7 +498,7 @@
         return retorno;
     }
 
-    function editarProducto(parametro, prodc){
+    function editarProducto(parametro, prodc) {
         // let btnEditar = contenedor.querySelector('#contenido-pagina form a');
         parametro.boton_editar.disabled = false;
         parametro.boton_editar.style.opacity = '1';
@@ -508,14 +508,14 @@
         parametro.tipo_producto.value = prodc.t_producto;
         parametro.imagen.value = prodc.imagen;
 
-        parametro.boton_editar.addEventListener('click', function() {
+        parametro.boton_editar.addEventListener('click', function () {
             for (const i in productos) {
                 if (prodc.id == productos[i].id) {
-                    productos[i].nombre = parametro.titulo_producto.value; 
-                    productos[i].precio = parametro.precio_producto.value; 
-                    productos[i].t_producto = parametro.tipo_producto.value; 
-                    productos[i].imagen = parametro.imagen.value; 
-                    
+                    productos[i].nombre = parametro.titulo_producto.value;
+                    productos[i].precio = parametro.precio_producto.value;
+                    productos[i].t_producto = parametro.tipo_producto.value;
+                    productos[i].imagen = parametro.imagen.value;
+
                 }
             }
 
@@ -594,7 +594,8 @@
             let contenedorGrande = contenedor.querySelector('section #lista-productos');
 
             let contenedorCartaProducto = d.createElement('article');
-            contenedorCartaProducto.setAttribute('class','mr-2')
+            contenedorCartaProducto.setAttribute('class', 'mr-2');
+            contenedorCartaProducto.setAttribute('id', productos[i].id);
 
             let cartaProducto = d.createElement('section');
             cartaProducto.setAttribute('class', 'card mb-1');
@@ -623,9 +624,9 @@
             let btnEditar = d.createElement('button');
             btnEditar.setAttribute('class', 'btn-warning text-light mr-1 pr-btnEditar');
             btnEditar.innerText = 'Editar';
-            btnEditar.addEventListener('click', function(){
+            btnEditar.addEventListener('click', function () {
                 editarProducto(formulario, productos[i]);
-                formulario.boton_guardar.disabled=true;
+                formulario.boton_guardar.disabled = true;
                 formulario.boton_guardar.style.opacity = '.6';;
             })
             cuerpoCarta.appendChild(btnEditar);
@@ -633,10 +634,10 @@
             let btnEliminar = d.createElement('button');
             btnEliminar.setAttribute('class', 'btn-danger pr-btnEditar');
             btnEliminar.innerText = 'Eliminar';
-            btnEliminar.addEventListener('click', function() {
+            btnEliminar.addEventListener('click', function () {
                 for (const a in productos) {
                     if (productos[a].id == productos[i].id) {
-                        productos.splice(a,1);
+                        productos.splice(a, 1);
                         console.log(productos);
                         localStorage.setItem('productos', JSON.stringify(productos));
                     }
@@ -646,5 +647,91 @@
 
             contenedorGrande.appendChild(contenedorCartaProducto);
         }
+    }
+
+    function eliminarFila(id) {
+        
+    }
+    function productosExistentes() {
+        let retorno = [
+            {
+                id: 0,
+                nombre: 'Leche nido +5',
+                precio: 9990,
+                t_producto: 'Leches',
+                imagen: 'assets/images/Productos/lecheNido2.png'
+            },
+            {
+                id: 1,
+                nombre: 'Leche nido +3',
+                precio: 9990,
+                t_producto: 'Leches',
+                imagen: 'assets/images/Productos/lecheNido3.png'
+            },
+            {
+                id: 2,
+                nombre: 'Leche nido +1',
+                precio: 9990,
+                t_producto: 'Leches',
+                imagen: 'assets/images/Productos/lecheNido4.png'
+            },
+            {
+                id: 3,
+                nombre: 'Aceite de Oliva',
+                precio: 7000,
+                t_producto: 'Abarrotes',
+                imagen: 'assets/images/Productos/aceiteOliva.png'
+            },
+            {
+                id: 4,
+                nombre: 'Aceite de Maravilla',
+                precio: 1890,
+                t_producto: 'Abarrotes',
+                imagen: 'assets/images/Productos/aceiteMaravilla.png'
+            },
+            {
+                id: 5,
+                nombre: 'Bebida sprunk',
+                precio: 650,
+                t_producto: 'Bebidas',
+                imagen: 'assets/images/Productos/sprunk.png'
+            },
+            {
+                id: 6,
+                nombre: 'Bolsa de peras',
+                precio: 1790,
+                t_producto: 'Frutas',
+                imagen: 'assets/images/Productos/bolsaPeras.png'
+            },
+            {
+                id: 7,
+                nombre: 'Almendras',
+                precio: 1190,
+                t_producto: 'Frutos secos',
+                imagen: 'assets/images/Productos/almendras.png'
+            },
+            {
+                id: 9,
+                nombre: 'Castaña caju',
+                precio: 4000,
+                t_producto: 'Frutos secos',
+                imagen: 'assets/images/Productos/castañaCaju.png'
+            },
+            {
+                id: 10,
+                nombre: 'Bandeja de huevos',
+                precio: 1200,
+                t_producto: 'Huevos',
+                imagen: 'assets/images/Productos/bandejaHuevos.png'
+            },
+            {
+                id: 11,
+                nombre: 'Salsa de tomate',
+                precio: 530,
+                t_producto: 'Salsas y condimentos',
+                imagen: 'assets/images/Productos/salsaTomate.png'
+            }
+        ]
+        return
     }
 })(document, window);
