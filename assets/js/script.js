@@ -45,6 +45,12 @@
             iniciar();
             // usuarioVacio();
             validarUsuarioIniciado();
+
+            if (w.location.hash == '#/crear_producto') {
+                for (const i in productos) {
+                    idP = productos[i].id + 1;
+                }
+            }
         }
     });
 
@@ -105,9 +111,9 @@
             } else if (w.location.hash == '#/crear_producto') {
                 let imagen = contenedor.getElementsByTagName('img')[0];
                 pintarProductosCRUD();
-
                 formulario = contenedor.getElementsByTagName('form')[0];
 
+                formulario.id_producto.value = idP;
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
                     if (validarNuevoProducto(formulario)) {
@@ -120,6 +126,7 @@
                             t_producto: formulario.tipo_producto.value,
                             imagen: formulario.imagen.value
                         }
+                        
 
                         productosLocalStorageLista(objeto_producto);
                     }
@@ -487,6 +494,36 @@
         }
         return retorno;
     }
+
+    function editarProducto(parametro, prodc){
+        let btnEditar = contenedor.querySelector('#contenido-pagina form a');
+        btnEditar.style.cursor = 'context-menu';
+        parametro.id_producto.value = prodc.id;
+        parametro.titulo_producto.value = prodc.nombre;
+        parametro.precio_producto.value = prodc.precio;
+        parametro.tipo_producto.value = prodc.t_producto;
+        parametro.imagen.value = prodc.imagen;
+
+        btnEditar.addEventListener('click', function() {
+            for (const i in productos) {
+                if (prodc.id == productos[i].id) {
+                    productos[i].nombre = parametro.titulo_producto.value; 
+                    productos[i].precio = parametro.precio_producto.value; 
+                    productos[i].t_producto = parametro.tipo_producto.value; 
+                    productos[i].imagen = parametro.imagen.value; 
+                    
+                }
+            }
+
+            localStorage.setItem('productos', JSON.stringify(productos));
+
+            formulario.reset();
+            formulario.boton_guardar.disabled = false;
+            btnEditar.disabled = true;
+        })
+
+
+    }
     // FIN PAGINA CREAR PRODUCTOS
     function cargarUsuarios() {
         let retorno = []
@@ -579,11 +616,24 @@
             let btnEditar = d.createElement('button');
             btnEditar.setAttribute('class', 'btn-warning text-light mr-1 pr-btnEditar');
             btnEditar.innerText = 'Editar';
+            btnEditar.addEventListener('click', function(){
+                editarProducto(formulario, productos[i]);
+                formulario.boton_guardar.disabled=true;
+            })
             cuerpoCarta.appendChild(btnEditar);
 
             let btnEliminar = d.createElement('button');
             btnEliminar.setAttribute('class', 'btn-danger pr-btnEditar');
             btnEliminar.innerText = 'Eliminar';
+            btnEliminar.addEventListener('click', function() {
+                for (const a in productos) {
+                    if (productos[a].id == productos[i].id) {
+                        productos.splice(a,1);
+                        console.log(productos);
+                        localStorage.setItem('productos', JSON.stringify(productos));
+                    }
+                }
+            });
             cuerpoCarta.appendChild(btnEliminar);
 
             contenedorGrande.appendChild(contenedorCartaProducto);

@@ -516,13 +516,19 @@ footer section article ul li :hover{
     min-width: 560px;
 }
 
+.contenido_pagina_crud_producto form section{
+    padding-top: 60px;
+}
 
 .contenido_pagina_crud_producto form article input{
     margin-bottom: 30px;
 }
+/* .contenido_pagina_crud_producto form article p, */
 .contenido_pagina_crud_producto form article button{
     margin-top: 20px;
 }
+
+
 .contenido_pagina_crud_producto form section input {
     width: 100%;
     margin-top: 50px;
@@ -558,8 +564,26 @@ footer section article ul li :hover{
     justify-content: space-around;
 }
 
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones a,
 .contenido_pagina_crud_producto form .contenido-crear-producto-botones button{
     width: 40%;
+}
+
+.contenido-crear-producto-botones a {
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.contenido-crear-producto-botones a{
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.contenido-crear-producto-botones a:hover {
+    text-decoration: none;
 }
 
 .contenido_pagina_crud_producto form .contenido-crear-producto-botones .btn-editar{
@@ -624,6 +648,7 @@ footer section article ul li :hover{
     .comments-container {
         width: 100%;
     }
+
 
     .reply-list {
         margin-top: 20px;
