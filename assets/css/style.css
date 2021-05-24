@@ -3,6 +3,9 @@
     font-family:'oswald' ;
     margin: 0;
 }
+h3{
+    color: #fff;
+}
 body {
     background-color: rgb(238, 238, 238);
 }
