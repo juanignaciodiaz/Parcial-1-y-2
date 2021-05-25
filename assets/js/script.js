@@ -9,8 +9,8 @@
     const contenedor = d.getElementById('contenido-pagina');
     let formulario = '';
     const rutas = {
-        '/': {
-            archivo: 'index.html',
+        '': {
+            archivo: 'principal.html',
             titulo: 'Principal'
         },
         '/productos': {
@@ -33,12 +33,29 @@
             archivo: 'crear_producto.html',
             titulo: 'CRUD producto'
         }
-
     }
+
+
+    const url = 'https://mindicador.cl/api/dolar'
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let element = document.getElementById('cambioDivisa')
+            element.innerHTML = ` 
+        <p>${data.nombre}</p>
+        <p>${data.serie[0].valor}</p>`
+            console.log(data)
+        })
+        .catch(err => console.log(err))
+
+
+    setInterval(function () { mostrarhora() }, 1000);
 
     let productos = cargarProductos();
 
     let usuarios = cargarUsuarios();
+
+    let comentario = cargarComentarios();
 
     // ======  EVENTOS ======
     d.addEventListener('readystatechange', function () {
@@ -76,93 +93,107 @@
         }).then(function (respuesta) {
             return respuesta.text();
         }).then(function (respuesta) {
-
+            const contenedor = d.getElementById('contenido-pagina');
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
             d.title = ruta.titulo;
 
-            if (w.location.hash == '#/contacto') {
+            // console.log(`${w.location.origin}/assets/pages/${ruta.archivo}`);
+            contenedor.innerHTML = '';
+            contenedor.innerHTML = respuesta;
+            d.title = ruta.titulo;
 
+            if (w.location.hash == '#/registrar') {
                 formulario = contenedor.getElementsByTagName('form')[0];
+                formulario.regUrlImagen.addEventListener('input', function () {
+                    let imagen = contenedor.getElementsByTagName('img')[0];
+
+                    if (formulario.regUrlImagen.value.length != '') {
+                        imagen.src = formulario.regUrlImagen.value;
+                    } else {
+                        imagen.src = 'assets/images/foto-incognito.jpg';
+                    }
+                });
 
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    alert('Haz sido registrado');
 
-
+                    crearUsuario(formulario)
+                });
+            } else if (w.location.hash == '#/inicio_sesion') {
+                formulario = contenedor.getElementsByTagName('form')[0];
+                formulario.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    iniciarSesion(formulario);
+                    console.log('evento login');
 
                 });
+            } else if (w.location.hash == '#/productos') {
+                usuario_iniciado_producto();
+                pintarProductos();
+            } else if (w.location.hash == '#/crear_producto') {
+                let imagen = contenedor.getElementsByTagName('img')[0];
+                pintarProductosCRUD();
+                formulario = contenedor.getElementsByTagName('form')[0];
+
+                formulario.boton_editar.disabled = true;
+                formulario.boton_editar.style.opacity = '.6';
+
+                formulario.id_producto.value = idP;
+                formulario.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (validarNuevoProducto(formulario)) {
+                        crearCartaProducto(formulario);
+
+                        let objeto_producto = {
+                            id: idP,
+                            nombre: formulario.titulo_producto.value,
+                            precio: formulario.precio_producto.value,
+                            t_producto: formulario.tipo_producto.value,
+                            imagen: formulario.imagen.value
+                        }
+
+
+                        productosLocalStorageLista(objeto_producto);
+                    }
+
+                });
+                formulario.imagen.addEventListener('input', function () {
+                    imagen.src = formulario.imagen.value;
+                });
+            } else if (w.location.hash == '#/comentarios') {
+                formulario = contenedor.getElementsByTagName('form')[0];
+                let contenido_lista = contenedor.querySelector('main section article div ul');
+                let condition_user = contenedor.querySelector('.comments-container p');
+
+                
+                formulario.style.display = 'none';
+                pintarComentario(contenido_lista);
+                if (usuario_log.length != 0) {
+                    condition_user.style.display = 'none';
+                    formulario.style.display = 'block';
+
+                    
+                    formulario.addEventListener('submit', function (e) {
+                        console.log(contenido_lista);
+                        e.preventDefault();
+                        console.log();
+                        let objeto_comentario = {
+                            foto: usuario_log.foto,
+                            nombre: usuario_log.usuario_nombre,
+                            comentario: formulario.comentario.value
+                        }
+
+                        comentariosLocalStorageLista(objeto_comentario);
+                        crearComentario(objeto_comentario, contenido_lista);
+                        formulario.reset();
+                        
+                    });
+                }
             }
 
         });
-        contenedor.innerHTML = '';
-        contenedor.innerHTML = respuesta;
-        d.title = ruta.titulo;
-
-        if (w.location.hash == '#/registrar') {
-
-            formulario = contenedor.getElementsByTagName('form')[0];
-
-            formulario.regUrlImagen.addEventListener('input', function () {
-                let imagen = contenedor.getElementsByTagName('img')[0];
-
-                if (formulario.regUrlImagen.value.length != '') {
-                    imagen.src = formulario.regUrlImagen.value;
-                } else {
-                    imagen.src = 'assets/images/foto-incognito.jpg';
-                }
-            });
-
-            formulario.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                crearUsuario(formulario)
-            });
-        } else if (w.location.hash == '#/inicio_sesion') {
-            formulario = contenedor.getElementsByTagName('form')[0];
-            formulario.addEventListener('submit', function (e) {
-                e.preventDefault();
-                iniciarSesion(formulario);
-                console.log('evento login');
-
-            });
-        } else if (w.location.hash == '#/productos') {
-            usuario_iniciado_producto();
-            pintarProductos();
-        } else if (w.location.hash == '#/crear_producto') {
-            let imagen = contenedor.getElementsByTagName('img')[0];
-            pintarProductosCRUD();
-            formulario = contenedor.getElementsByTagName('form')[0];
-
-            formulario.boton_editar.disabled = true;
-            formulario.boton_editar.style.opacity = '.6';
-
-            formulario.id_producto.value = idP;
-            formulario.addEventListener('submit', function (e) {
-                e.preventDefault();
-                if (validarNuevoProducto(formulario)) {
-                    crearCartaProducto(formulario);
-
-                    let objeto_producto = {
-                        id: idP,
-                        nombre: formulario.titulo_producto.value,
-                        precio: formulario.precio_producto.value,
-                        t_producto: formulario.tipo_producto.value,
-                        imagen: formulario.imagen.value
-                    }
-
-
-                    productosLocalStorageLista(objeto_producto);
-                }
-
-            });
-            formulario.imagen.addEventListener('input', function () {
-                imagen.src = formulario.imagen.value;
-            });
-        }
-
-    };
-
+    }
 
     // GUARDAR LOCALSTORAGE Y LISTA
     function usuariosLocalStorageLista(usuario) {
@@ -182,6 +213,17 @@
         idP++;
     }
 
+    function comentariosLocalStorageLista(comentarios) {
+        comentario.push(comentarios);
+        localStorage.setItem('comentarios', JSON.stringify(comentario));
+    }
+
+    function pintarComentario(contenido_comentario) {
+        for (const i in comentario) {
+            // console.log(comentario[i]);
+            crearComentario(comentario[i],contenido_comentario );
+        }
+    }
 
     // FUNCIONES
     function crearUsuario(user) {
@@ -342,7 +384,13 @@
         }
     }
 
+    // function usuarioVacio() {
+    //     if (usuario_log.length != null || usuario_log != '') {
+    //         let barra_ingreso = d.getElementsByTagName('ul')[0].children;
 
+    //         barra_ingreso[0].classList.toggle('bloqueada');
+    //     }
+    // }
     // FIN INCIAR SESION
     //  USUARIO INICIADO
     function validarUsuarioIniciado() {
@@ -384,12 +432,78 @@
             btn_redirigir_crear.style.display = 'none';
 
         }
-
     }
+
+    // Funciones de la página comentarios
+
+    function crearComentario(obj_comentario, contenido) {
+
+        const lista = d.createElement('li');
+        lista.setAttribute('class', 'comments-list');
+
+        const comment_main_level = d.createElement('div');
+        comment_main_level.setAttribute('class', 'comment-main-level');
+
+        const comment_avatar = d.createElement('div');
+        comment_avatar.setAttribute('class', 'comment-avatar');
+        comment_main_level.appendChild(comment_avatar);
+
+        const avatar_img = d.createElement('img');
+        avatar_img.setAttribute('src', obj_comentario.foto);
+        comment_avatar.appendChild(avatar_img);
+
+        const comment_box = d.createElement('div');
+        comment_box.setAttribute('class', 'comment-box');
+        comment_main_level.appendChild(comment_box);
+
+        const comment_head = d.createElement('div');
+        comment_head.setAttribute('class', 'comment-head');
+        comment_box.appendChild(comment_head);
+
+        const comment_name = d.createElement('h6');
+        comment_name.setAttribute('class', 'comment-name');
+        comment_name.innerText = obj_comentario.nombre;
+        comment_head.appendChild(comment_name);
+
+        const comment_date = d.createElement('span');
+        comment_date.setAttribute('id', 'comment-date');
+        comment_date.innerText = 'Hace un momento';
+        comment_head.appendChild(comment_date);
+
+        const comment_icon_like = d.createElement('i');
+        comment_icon_like.setAttribute('class', 'fas fa-thumbs-up');
+        comment_head.appendChild(comment_icon_like);
+
+        const comment_icon_edit = d.createElement('i');
+        comment_icon_edit.setAttribute('class', 'fas fa-pencil-alt');
+        comment_head.appendChild(comment_icon_edit);
+
+        const comment_icon_share = d.createElement('i');
+        comment_icon_share.setAttribute('class', 'fas fa-share-alt');
+        comment_head.appendChild(comment_icon_share);
+
+        const comment_content = d.createElement('div');
+        comment_content.setAttribute('class', 'comment-content');
+        comment_content.innerText = obj_comentario.comentario;
+        comment_box.appendChild(comment_content);
+
+
+        lista.appendChild(comment_main_level);
+        contenido.appendChild(lista);
+    }
+
 
 
     // FIN PAGINA PRODUCTOS
     // PAGINA CREAR PRODUCTO
+    function cargarComentarios() {
+        let retorno = []
+        if (localStorage.getItem('comentarios') != null) {
+            retorno = JSON.parse(localStorage.getItem('comentarios'));
+        }
+        return retorno;
+    }
+
     function crearCartaProducto(parametro) {
         let contenedorGrande = contenedor.querySelector('section #lista-productos');
 
@@ -461,7 +575,6 @@
     }
 
     function editarProducto(parametro, prodc) {
-        // let btnEditar = contenedor.querySelector('#contenido-pagina form a');
         parametro.boton_editar.disabled = false;
         parametro.boton_editar.style.opacity = '1';
         parametro.id_producto.value = prodc.id;
@@ -611,4 +724,19 @@
         }
     }
 
+    function eliminarFila(id) {
+
+    }
+
+    function mostrarhora() {
+        let momentoActual = new Date();
+        let hora = momentoActual.getHours();
+        let minuto = momentoActual.getMinutes();
+        let segundo = momentoActual.getSeconds();
+
+        let horaImprimible = hora + ":" + minuto + ":" + segundo;
+
+        const contenido_hora = document.getElementById('mostrarhora');
+        contenido_hora.innerText = horaImprimible;
+    }
 })(document, window);
