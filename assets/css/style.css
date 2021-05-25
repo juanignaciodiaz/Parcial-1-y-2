@@ -142,9 +142,9 @@ header ul li a:hover {
     margin-left: 10px;
 }
 
-.filtro article ul li ul:target {
+/* .filtro article ul li ul:target {
     display: block;
-}
+} */
 
 .espacio-boton-crear-producto {
     text-align: center;
@@ -159,7 +159,9 @@ header ul li a:hover {
     color: #F57C00;
     transition: all 200ms;
 }
-
+.desplegar {
+    display: none;
+}
 
 .inicio-h3{
     text-align: center;
@@ -178,6 +180,16 @@ header ul li a:hover {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+}
+
+.lista-filtro-producto li {
+    color: #007bff;
+    cursor: pointer;
+
+}
+.lista-filtro-producto li:hover{
+    text-decoration: underline;
+
 }
 
 /* .cartas{
@@ -344,20 +356,20 @@ button,
 }
 
 
-.Contac{ 
+.contac{ 
     padding: 15px;
     background:white; 
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .contac article{
     width: 30%;
-    
+    min-width: 150px;
 }
 
-.Contac p{
+.contac p{
     font-family: inherit;
     /* border: 1px red solid ; */
     font-size: 20px;
@@ -681,6 +693,12 @@ footer section article ul li :hover{
 /* Condiciones PRODUCTOS */
 @media screen and (max-width:400px) {
     /* Condiciones PRODUCTOS */
+    .lista-sesion {
+        width: 40%;
+    }
+    .listaAPI {
+        display: none;
+    }
     .filtro{
         width: 90%;
         border-right: 1px solid rgb(199, 199, 199);
@@ -730,8 +748,29 @@ footer section article ul li :hover{
         clear: both;
     }
 
+    .contenidoContacto{
+        width: 85%;
+    }
+
+    .contac article{
+        flex-direction:column;
+        width: 80%;
+        
+    }
+
+    .lista-inicio-s {
+        width: 75%;
+    }
+
     /* .formulario form img {
         width: 280px;
     } */
 }
 /* ----------- */
+
+@media screen and (max-width:900px){
+    .lista-hora,
+    .listaAPI {
+        display: none;
+    }
+}

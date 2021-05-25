@@ -13,6 +13,10 @@
             archivo: 'principal.html',
             titulo: 'Principal'
         },
+        '/': {
+            archivo: 'principal.html',
+            titulo: 'Principal'
+        },
         '/productos': {
             archivo: 'productos.html',
             titulo: 'Productos'
@@ -32,6 +36,10 @@
         '/crear_producto': {
             archivo: 'crear_producto.html',
             titulo: 'CRUD producto'
+        },
+        '/contacto': {
+            archivo: 'contacto.html',
+            titulo: 'Contacto'
         }
     }
 
@@ -63,7 +71,9 @@
             iniciar();
             // usuarioVacio();
             validarUsuarioIniciado();
-
+            for (const i in productos) {
+                idP = productos[i].id;
+            }
             if (w.location.hash == '#/crear_producto') {
                 for (const i in productos) {
                     idP = productos[i].id + 1;
@@ -120,20 +130,36 @@
 
                     crearUsuario(formulario)
                 });
+
+
             } else if (w.location.hash == '#/inicio_sesion') {
                 formulario = contenedor.getElementsByTagName('form')[0];
                 formulario.addEventListener('submit', function (e) {
                     e.preventDefault();
                     iniciarSesion(formulario);
-                    console.log('evento login');
 
                 });
+
+
             } else if (w.location.hash == '#/productos') {
+                let lista_plegable = contenedor.querySelectorAll('.lista-filtro-producto li');
                 usuario_iniciado_producto();
                 pintarProductos();
+
+                // lista_plegable[1].addEventListener('click', function(){
+                //     lista_plegable[1].children[0].classList.toggle('desplegar');
+                // });
+                
+                // lista_plegable[5].addEventListener('click', function(){
+                //     lista_plegable[5].children[0].classList.toggle('desplegar');
+                // });
+                // lista_plegable[9].addEventListener('click', function(){
+                //     lista_plegable[9].children[0].classList.toggle('desplegar');
+                // });
+                
             } else if (w.location.hash == '#/crear_producto') {
                 let imagen = contenedor.getElementsByTagName('img')[0];
-                pintarProductosCRUD();
+                pintarProductosCRUD(contenedor);
                 formulario = contenedor.getElementsByTagName('form')[0];
 
                 formulario.boton_editar.disabled = true;
@@ -166,14 +192,14 @@
                 let contenido_lista = contenedor.querySelector('main section article div ul');
                 let condition_user = contenedor.querySelector('.comments-container p');
 
-                
+
                 formulario.style.display = 'none';
                 pintarComentario(contenido_lista);
                 if (usuario_log.length != 0) {
                     condition_user.style.display = 'none';
                     formulario.style.display = 'block';
 
-                    
+
                     formulario.addEventListener('submit', function (e) {
                         console.log(contenido_lista);
                         e.preventDefault();
@@ -187,13 +213,40 @@
                         comentariosLocalStorageLista(objeto_comentario);
                         crearComentario(objeto_comentario, contenido_lista);
                         formulario.reset();
-                        
+
                     });
                 }
+            } else if (w.location.hash == '#/contacto') {
+
+                formulario = contenedor.getElementsByTagName('form')[0];
+
+                formulario.addEventListener('submit', function (evento) {
+                    evento.preventDefault();
+                    formulario.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        alert('Haz sido registrado');
+
+
+                    });
+                });
             }
 
         });
     }
+
+
+    function cargarDatosDesdeLocalStorage() {
+        let retorno = [];
+        if (localStorage.getItem('personas') !== null) {
+            retorno = JSON.parse(localStorage.getItem('personas'));
+        }
+        return retorno;
+    }
+
+    // const datosUsuario = cargarDatosDesdeLocalStorage();
+    // formulario = document.getElementsByTagName('form')[0];
+
+
 
     // GUARDAR LOCALSTORAGE Y LISTA
     function usuariosLocalStorageLista(usuario) {
@@ -218,10 +271,11 @@
         localStorage.setItem('comentarios', JSON.stringify(comentario));
     }
 
+
     function pintarComentario(contenido_comentario) {
         for (const i in comentario) {
             // console.log(comentario[i]);
-            crearComentario(comentario[i],contenido_comentario );
+            crearComentario(comentario[i], contenido_comentario);
         }
     }
 
@@ -248,6 +302,7 @@
             }
             // console.log(usuario.usuario_nombre);
             usuariosLocalStorageLista(usuario);
+            formulario.reset();
         }
         // console.log(usuario.nombre);
         // console.log(usuarios);
@@ -359,20 +414,24 @@
         for (const i in usuarios) {
 
             if (usuarios[i].usuario_nombre == usuario.logUsuario.value) {
-                alert('Usuario existe')
+                
                 validacion = true;
+
+                if (usuarios[i].contrasenia == usuario.logContrasena.value) {
+                    // alert('Contraseña existe');
+                    validacion = true;
+                } else {
+                    usuario.logContrasena.style.border = '2px solid red';
+                    // alert('Contraseña no existe');
+                    validacion = false;
+                }
+
             } else {
-                alert('No existe');
+                usuario.logUsuario.style.border = '2px solid red';
+                // alert('No existe');
                 validacion = false;
             }
 
-            if (usuarios[i].contrasenia == usuario.logContrasena.value) {
-                alert('Contraseña existe');
-                validacion = true;
-            } else {
-                alert('Contraseña no existe');
-                validacion = false;
-            }
 
             if (validacion) {
                 // console.log(usuarios[i]);
@@ -663,7 +722,7 @@
         }
     }
 
-    function pintarProductosCRUD() {
+    function pintarProductosCRUD(con) {
         for (const i in productos) {
 
             let contenedorGrande = contenedor.querySelector('section #lista-productos');
@@ -713,7 +772,10 @@
                 for (const a in productos) {
                     if (productos[a].id == productos[i].id) {
                         productos.splice(a, 1);
-                        console.log(productos);
+                        // console.log(productos);
+
+                        // eliminarFila(productos[i].id, con);
+
                         localStorage.setItem('productos', JSON.stringify(productos));
                     }
                 }
@@ -724,9 +786,13 @@
         }
     }
 
-    function eliminarFila(id) {
+    // function eliminarFila(id, con) {
+    //     let prodArticulo = con.getElementsByClassName('lista-productos');
+    //     console.log(prodArticulo);
+    //     // return new Promise((resolve, reject) => {
 
-    }
+    //     // });
+    // }
 
     function mostrarhora() {
         let momentoActual = new Date();
