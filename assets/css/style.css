@@ -1,8 +1,9 @@
 * {
     padding: 0;
-    font-family:'oswald' ;
+    font-family:'oswald';
     margin: 0;
 }
+
 body {
     background-color: rgb(238, 238, 238);
 }
@@ -18,6 +19,31 @@ header {
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.hora {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.listaAPI{
+    margin: auto;
+    align-items: flex-end;
+}
+
+.contenidoDivisa {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 17px;
+    color: #fff;
+    text-align: left;
+}
+.cerrar-cuenta {
+    display: none;
 }
 
 header .logo-titulo {
@@ -37,21 +63,51 @@ header .logo-titulo {
 header ul {
     display: flex;
     list-style: none;
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 16%;
 }
 
+.lista-hora {
+    width: 100%;
+    display: flex;
+
+}
+
+.lista-hora p {
+    margin: auto;
+    /* text-align: right; */
+    width: 45%;
+    display: block;
+    text-align: right;
+}
 header ul li {
     margin-right: 15px;
+    color: #fff;
 }
+
+.lista-cerrar-sesion,
 header ul li a {
     text-decoration: none;
     color: #fff;
+}
+
+.lista-cerrar-sesion {
+    cursor: pointer;
 }
 
 header ul li a:hover {
     text-decoration: none;
     color: #F57C00;
     transition: all 300ms;
+}
+
+.listaRedes {
+    width:16%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 /* --------------------- */
 /* Producto */
@@ -70,21 +126,40 @@ header ul li a:hover {
     min-height: 200px;
     box-sizing: border-box;
     max-height: 280px;
+    
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
-.filtro h3,
-.filtro>ul {
+.filtro article h3,
+.filtro > article >ul {
     margin: 10px;
 }
 
-.filtro ul li ul {
+.filtro article ul li ul {
     display: none;
     list-style: none;
     margin-left: 10px;
 }
 
-.filtro ul li ul:target {
+.filtro article ul li ul:target {
     display: block;
 }
+
+.espacio-boton-crear-producto {
+    text-align: center;
+}
+
+.espacio-boton-crear-producto p {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.espacio-boton-crear-producto p:hover {
+    color: #F57C00;
+    transition: all 200ms;
+}
+
 
 .inicio-h3{
     text-align: center;
@@ -128,7 +203,7 @@ header ul li a:hover {
 
 /* Cartas */
 .articulos section article .card img {
-    width: 100px;
+    width: 130px;
     height: 150px;
     display: block;
     margin: auto;
@@ -152,17 +227,23 @@ header ul li a:hover {
     margin-top: 10px;
 }
 
-.politicas,
+.regFotos,
 .formulario {
     width: 50%;
 
+}
+.regUrlImagen {
+    display: block;
+    margin: auto;
+    
 }
 input {
     width: 90%;
     margin-bottom: 10px;
 }
 
-button {
+button,
+.public-button {
     padding: 5px 10px;
     background-color: #28a745;
     color: rgb(34, 32, 32);
@@ -231,6 +312,18 @@ button {
     display: block;
     margin: auto;
 }
+
+.regFotos img {
+    display: block;
+    margin: 3rem auto;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.regGuardar {
+    width: 50%;
+}
 /* ---------------- */
 
 /* PAGINA CONTACTO */
@@ -286,7 +379,7 @@ section h2{
 
 footer {
     /* margin: auto; */
-    margin-top: 10px;
+    margin-top: 5rem;
     padding-top: 2%;
     background-color: #BC0000;
     width: 100%;
@@ -330,6 +423,34 @@ footer section article ul li :hover{
 
 /* ---------------- */
     /*--- Estilo de Comentarios ---*/
+.public-comment {
+    background-color: white;
+    padding: 0.5rem;
+    margin-bottom: 3.65rem;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.public-box .comment-content {
+    padding-bottom: 0px;
+    overflow: hidden;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.public-box .comment-content textarea {
+    padding: 1.65rem;
+}
+
+.comment-buttom {
+    text-align: right;
+}
+
+.public-button {
+    width: 5rem;
+}
 
 .comments-container {
     margin: 60px auto 20px;
@@ -447,6 +568,116 @@ footer section article ul li :hover{
     border-radius: 0 0 5px 5px;
 }
 
+/* PAGINA CREAR PRODUCTO */
+.contenido_pagina_crud_producto {
+    background-color: white;
+    width: 94%;
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid rgb(199, 199, 199);
+
+}
+
+
+.contenido_pagina_crud_producto form{
+    width: 96%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.contenido_pagina_crud_producto form section,
+.contenido_pagina_crud_producto form article{
+    width: 48%;
+    min-width: 560px;
+}
+
+.contenido_pagina_crud_producto form section{
+    padding-top: 60px;
+}
+
+.contenido_pagina_crud_producto form article input{
+    margin-bottom: 30px;
+}
+/* .contenido_pagina_crud_producto form article p, */
+.contenido_pagina_crud_producto form article button{
+    margin-top: 20px;
+}
+
+
+.contenido_pagina_crud_producto form section input {
+    width: 100%;
+    margin-top: 50px;
+}
+.espacio-imagen-nuevo-producto{
+    width: 40%;
+    height: 70%;
+    margin: auto;
+}
+
+.contenido_pagina_crud_producto form section div img{
+    width: 190px;
+    height: 210px;
+    display: block;
+    margin: auto;
+}
+
+.contenido_pagina_crud_producto form article .crear-producto-precio{
+    width: 30%;
+}
+
+.contenido_pagina_crud_producto form article .crear-producto-descuento {
+    width: 20%;
+    margin-left: 10px;
+}
+.contenido_pagina_crud_producto form .contenido-crearPagina {
+    margin: 60px auto;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones a,
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones button{
+    width: 40%;
+}
+
+.contenido-crear-producto-botones a {
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.contenido-crear-producto-botones a{
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.contenido-crear-producto-botones a:hover {
+    text-decoration: none;
+}
+
+.contenido_pagina_crud_producto form .contenido-crear-producto-botones .btn-editar{
+    background-color: #ffc107;
+}
+
+.lista-productos h3 {
+    width: 100%;
+}
+
+.lista-productos {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pr-btnEditar {
+    width: 48%;
+}
+
 /* CONDICIONES */
 /* Condiciones PRODUCTOS */
 @media screen and (max-width:400px) {
@@ -475,8 +706,13 @@ footer section article ul li :hover{
         height: 500px;
     }
 
-    .politicas {
-        display: none;
+    .regFotos {
+        width: 100%;
+    }
+
+    .regFotos img {
+        width: 200px;
+        height: 200px;
     }
 
     .formulario,
@@ -487,6 +723,7 @@ footer section article ul li :hover{
     .comments-container {
         width: 100%;
     }
+
 
     .reply-list {
         margin-top: 20px;

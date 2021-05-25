@@ -1,126 +1,33 @@
 <section>
   <article>
     <div class="comments-container">
-      <h2>Sección de Comentarios</h2>
+      <h2>Comentarios</h2>
+      <p class="condition-user">Por favor
+        <a href="#/inicio_sesion">Inicia Sesión</a> o
+        <a href="#/registrar">Regístrate</a> para comentar
+      </p>
       <ul id="comments-list" class="comments-list">
-        <li>
-          <div class="comment-main-level">
-            <div class="comment-avatar">
-              <img src="../images/avatar/cesar_avatar.jpg">
-            </div>
-            <div class="comment-box">
-              <div class="comment-head">
-                <h6 class="comment-name">Cesar Vialpando</h6>
-                <span>Hace 4 horas</span>
-                <i class='fas fa-thumbs-up'></i>
-                <i class='fas fa-pencil-alt'></i>
-                <i class='fas fa-share-alt'></i>
-              </div>
-              <div class="comment-content">
-                Este es el mejor supermercado, de lo mejor en este barrio.
-              </div>
+
+        <!-- Caja de comentarios -->
+        <form class="public-comment" id="public-comment">
+          <div class="comment-avatar">
+            <img src="assets/images/avatar/default_avatar.jpg">
+          </div>
+          <div class="public-box">
+            <div class="comment-content">
+              <textarea name="comentario" placeholder="Agregar comentario..." required maxlength="199" minlength="1"
+                class="form-control"></textarea>
             </div>
           </div>
-          <ul class="comments-list reply-list">
-            <li>
-              <div class="comment-avatar">
-                <img src="../images/avatar/cj_avatar.jpg">
-              </div>
-              <div class="comment-box">
-                <div class="comment-head">
-                  <h6 class="comment-name">Carl Johnson</h6>
-                  <span>Hace 1 hora</span>
-                  <i class='fas fa-thumbs-up'></i>
-                  <i class='fas fa-pencil-alt'></i>
-                  <i class='fas fa-share-alt'></i>
-                </div>
-                <div class="comment-content">
-                  El otro día compré leche en polvo Nido y me llegó el mismo día.
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="comment-avatar">
-                <img src="../images/avatar/madd_avatar.jpg">
-              </div>
-              <div class="comment-box">
-                <div class="comment-head">
-                  <h6 class="comment-name">Madd Dogg</h6>
-                  <span>Hace 3 horas</span>
-                  <i class='fas fa-thumbs-up'></i>
-                  <i class='fas fa-pencil-alt'></i>
-                  <i class='fas fa-share-alt'></i>
-                </div>
-                <div class="comment-content">
-                  Muy buena oferta la de la leche de parte de este supermercado, no habría sido posible si el convenio
-                  con Nido no existiera.
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
+          <div class="comment-buttom">
+            <button type="submit" id="btnPublicar" class="public-button">Publicar</button>
+          </div>
+        </form>
+
         <li class="comments-list">
           <div class="comment-main-level">
             <div class="comment-avatar">
-              <img src="../images/avatar/ryder_avatar.jpg">
-            </div>
-            <div class="comment-box">
-              <div class="comment-head">
-                <h6 class="comment-name">Ryder</h6>
-                <span>Hace 1 día</span>
-                <i class='fas fa-thumbs-up'></i>
-                <i class='fas fa-pencil-alt'></i>
-                <i class='fas fa-share-alt'></i>
-              </div>
-              <div class="comment-content">
-                Una decepción! Compré una caja de huevos por envio a domicilio y ni rotos me llegaron, venía vacía la
-                caja.
-              </div>
-            </div>
-          </div>
-          <ul class="comments-list reply-list">
-            <li>
-              <div class="comment-avatar">
-                <img src="../images/avatar/tenpenny_avatar.png">
-              </div>
-              <div class="comment-box">
-                <div class="comment-head">
-                  <h6 class="comment-name">Frank Tenpenny</h6>
-                  <span>Hace 23 horas</span>
-                  <i class='fas fa-thumbs-up'></i>
-                  <i class='fas fa-pencil-alt'></i>
-                  <i class='fas fa-share-alt'></i>
-                </div>
-                <div class="comment-content">
-                  xD?
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="comments-list">
-          <div class="comment-main-level">
-            <div class="comment-avatar">
-              <img src="../images/avatar/madd_avatar.jpg">
-            </div>
-            <div class="comment-box">
-              <div class="comment-head">
-                <h6 class="comment-name">Madd Dogg</h6>
-                <span>Hace 3 días</span>
-                <i class='fas fa-thumbs-up'></i>
-                <i class='fas fa-pencil-alt'></i>
-                <i class='fas fa-share-alt'></i>
-              </div>
-              <div class="comment-content">
-                Grande SPRUNK! Grande 24/7 Supermarket!
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="comments-list">
-          <div class="comment-main-level">
-            <div class="comment-avatar">
-              <img src="../images/avatar/cj_avatar.jpg">
+              <img src="assets/images/avatar/cj_avatar.jpg">
             </div>
             <div class="comment-box">
               <div class="comment-head">
@@ -138,7 +45,7 @@
           <ul class="comments-list reply-list">
             <li>
               <div class="comment-avatar">
-                <img src="../images/avatar/big_avatar.jpg">
+                <img src="assets/images/avatar/big_avatar.jpg">
               </div>
               <div class="comment-box">
                 <div class="comment-head">
@@ -158,34 +65,5 @@
       </ul>
     </div>
   </article>
-
-  <footer>
-    <section>
-      <article class="redes-sociales">
-        <h3>Redes sociales</h3>
-        <ul>
-          <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i> Facebook</a></li>
-          <li><a href="https://twitter.com/"> <i class="fab fa-twitter"></i> twitter</a></li>
-        </ul>
-      </article>
-      <article class="direccion">
-        <h3>Direcciones</h3>
-        <ul>
-          <li><i class="fas fa-shopping-cart"></i> 24/7 Santiago - Grand Senora Desert #0420</li>
-          <li><i class="fas fa-shopping-cart"></i> 24/7 Ñuñoa - Sandy Shores #2460 </li>
-          <li><i class="fas fa-shopping-cart"></i> 24/7 San Bernardo - AV.Padre Hurtado #1280</li>
-        </ul>
-      </article class="nuestra-empresa">
-      <article>
-        <h3>Trabaja con nosotros</h3>
-        <ul>
-          <li>Envianos un correo con tu curriculum a:</li>
-          <li><i class="far fa-envelope"></i> Empleo.Supermercado24-7@Gmail.com</li>
-          <li><i class="fab fa-whatsapp"></i> +56985964123</li>
-        </ul>
-      </article>
-    </section>
-  </footer>
 
 </section>
