@@ -759,9 +759,11 @@
             btnEditar.setAttribute('class', 'btn-warning text-light mr-1 pr-btnEditar');
             btnEditar.innerText = 'Editar';
             btnEditar.addEventListener('click', function () {
+                let imagen_act = contenedor.getElementsByTagName('img')[0];
                 editarProducto(formulario, productos[i]);
                 formulario.boton_guardar.disabled = true;
                 formulario.boton_guardar.style.opacity = '.6';;
+                imagen_act.src = productos[i].imagen
             })
             cuerpoCarta.appendChild(btnEditar);
 
