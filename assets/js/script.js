@@ -1,4 +1,4 @@
-(function (d, w) {
+(function(d, w) {
     // VARIABLES
 
     //  usuario registrado
@@ -57,7 +57,7 @@
         .catch(err => console.log(err))
 
 
-    setInterval(function () { mostrarhora() }, 1000);
+    setInterval(function() { mostrarhora() }, 1000);
 
     let productos = cargarProductos();
 
@@ -66,7 +66,7 @@
     let comentario = cargarComentarios();
 
     // ======  EVENTOS ======
-    d.addEventListener('readystatechange', function () {
+    d.addEventListener('readystatechange', function() {
         if (d.readyState === 'interactive') {
             iniciar();
             // usuarioVacio();
@@ -86,7 +86,7 @@
     // ====== FUNCIONES ======
 
     function iniciar() {
-        w.addEventListener('hashchange', function () {
+        w.addEventListener('hashchange', function() {
             const ruta = w.location.hash;
 
             cargarPagina(ruta);
@@ -101,9 +101,9 @@
 
         fetch(`${w.location.origin}/assets/pages/${ruta.archivo}`, {
             method: 'GET'
-        }).then(function (respuesta) {
+        }).then(function(respuesta) {
             return respuesta.text();
-        }).then(function (respuesta) {
+        }).then(function(respuesta) {
             const contenedor = d.getElementById('contenido-pagina');
             contenedor.innerHTML = '';
             contenedor.innerHTML = respuesta;
@@ -116,7 +116,7 @@
 
             if (w.location.hash == '#/registrar') {
                 formulario = contenedor.getElementsByTagName('form')[0];
-                formulario.regUrlImagen.addEventListener('input', function () {
+                formulario.regUrlImagen.addEventListener('input', function() {
                     let imagen = contenedor.getElementsByTagName('img')[0];
 
                     if (formulario.regUrlImagen.value.length != '') {
@@ -126,7 +126,7 @@
                     }
                 });
 
-                formulario.addEventListener('submit', function (e) {
+                formulario.addEventListener('submit', function(e) {
                     e.preventDefault();
 
                     crearUsuario(formulario)
@@ -135,7 +135,7 @@
 
             } else if (w.location.hash == '#/inicio_sesion') {
                 formulario = contenedor.getElementsByTagName('form')[0];
-                formulario.addEventListener('submit', function (e) {
+                formulario.addEventListener('submit', function(e) {
                     e.preventDefault();
                     iniciarSesion(formulario);
 
@@ -167,7 +167,7 @@
                 formulario.boton_editar.style.opacity = '.6';
 
                 formulario.id_producto.value = idP;
-                formulario.addEventListener('submit', function (e) {
+                formulario.addEventListener('submit', function(e) {
                     e.preventDefault();
                     if (validarNuevoProducto(formulario)) {
                         crearCartaProducto(formulario);
@@ -185,7 +185,7 @@
                     }
 
                 });
-                formulario.imagen.addEventListener('input', function () {
+                formulario.imagen.addEventListener('input', function() {
                     imagen.src = formulario.imagen.value;
                 });
             } else if (w.location.hash == '#/comentarios') {
@@ -201,7 +201,7 @@
                     formulario.style.display = 'block';
 
 
-                    formulario.addEventListener('submit', function (e) {
+                    formulario.addEventListener('submit', function(e) {
                         console.log(contenido_lista);
                         e.preventDefault();
                         console.log();
@@ -221,9 +221,9 @@
 
                 formulario = contenedor.getElementsByTagName('form')[0];
 
-                formulario.addEventListener('submit', function (evento) {
+                formulario.addEventListener('submit', function(evento) {
                     evento.preventDefault();
-                    formulario.addEventListener('submit', function (e) {
+                    formulario.addEventListener('submit', function(e) {
                         e.preventDefault();
                         alert('Haz sido registrado');
 
@@ -254,7 +254,7 @@
                 if (usuario_log.length != 0) {
                     btn_redirigir_crear.style.display = 'block';
 
-                    btn_redirigir_crear.addEventListener('click', function () {
+                    btn_redirigir_crear.addEventListener('click', function() {
                         w.location.hash = '#/crear_producto'
                     });
                 } else {
@@ -326,14 +326,14 @@
         console.log(regUsuario);
         if (validarNuevoUsuario(user)) {
             let usuario = {
-                usuario_nombre: regUsuario,
-                nombre: nombre,
-                correo: correo,
-                contrasenia: contrasenia,
-                fecha_nac: fecha_nac,
-                foto: foto_perfil
-            }
-            // console.log(usuario.usuario_nombre);
+                    usuario_nombre: regUsuario,
+                    nombre: nombre,
+                    correo: correo,
+                    contrasenia: contrasenia,
+                    fecha_nac: fecha_nac,
+                    foto: foto_perfil
+                }
+                // console.log(usuario.usuario_nombre);
             usuariosLocalStorageLista(usuario);
             formulario.reset();
         }
@@ -396,6 +396,7 @@
 
         return confirmacion;
     }
+
     function validarFecha(fecha) {
         let val = false;
         let fecha_partes = fecha.split('-');
@@ -418,8 +419,7 @@
         if (!re.exec(valor)) {
 
             alert('email no válido');
-        }
-        else {
+        } else {
             alert('email válido');
             v = true;
         }
@@ -502,10 +502,11 @@
             // console.log(usuario_log.length);
         }
     }
+
     function cerrarSesion() {
         let botonSalir = d.getElementById('cerrar-cuenta');
 
-        botonSalir.addEventListener('click', function () {
+        botonSalir.addEventListener('click', function() {
             localStorage.setItem('usuario_iniciado', []);
             // console.log([].length);
             // li.style.display = 'block';
@@ -520,7 +521,7 @@
         if (usuario_log.length != 0) {
             btn_redirigir_crear.style.display = 'block';
 
-            btn_redirigir_crear.addEventListener('click', function () {
+            btn_redirigir_crear.addEventListener('click', function() {
                 w.location.hash = '#/crear_producto'
             });
         } else {
@@ -654,8 +655,7 @@
         if (parametro.tipo_producto.value == '') {
             alert('No hay producto');
             confirmacion = false;
-        } else {
-        }
+        } else {}
 
         console.log(confirmacion);
         return confirmacion;
@@ -678,7 +678,7 @@
         parametro.tipo_producto.value = prodc.t_producto;
         parametro.imagen.value = prodc.imagen;
 
-        parametro.boton_editar.addEventListener('click', function () {
+        parametro.boton_editar.addEventListener('click', function() {
             for (const i in productos) {
                 if (prodc.id == productos[i].id) {
                     productos[i].nombre = parametro.titulo_producto.value;
@@ -760,6 +760,9 @@
 
     function pintarProductosCRUD(con) {
         for (const i in productos) {
+            let idTemp = productos[i].id;
+            // console.log(idTemp);
+
 
             let contenedorGrande = contenedor.querySelector('section #lista-productos');
 
@@ -794,7 +797,7 @@
             let btnEditar = d.createElement('button');
             btnEditar.setAttribute('class', 'btn-warning text-light mr-1 pr-btnEditar');
             btnEditar.innerText = 'Editar';
-            btnEditar.addEventListener('click', function () {
+            btnEditar.addEventListener('click', function() {
                 let imagen_act = contenedor.getElementsByTagName('img')[0];
                 editarProducto(formulario, productos[i]);
                 formulario.boton_guardar.disabled = true;
@@ -806,13 +809,15 @@
             let btnEliminar = d.createElement('button');
             btnEliminar.setAttribute('class', 'btn-danger pr-btnEditar');
             btnEliminar.innerText = 'Eliminar';
-            btnEliminar.addEventListener('click', function () {
+            btnEliminar.addEventListener('click', function() {
                 for (const a in productos) {
                     if (productos[a].id == productos[i].id) {
                         productos.splice(a, 1);
                         // console.log(productos);
 
-                        // eliminarFila(productos[i].id, con);
+                        // eliminarFila(productos[a].id, con);
+                        // console.log(productos[a].id);
+                        contenedorGrande.removeChild(contenedorCartaProducto);
 
                         localStorage.setItem('productos', JSON.stringify(productos));
                     }
