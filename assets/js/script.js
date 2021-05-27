@@ -230,17 +230,17 @@
 
                     });
                 });
-            } else if (w.location.hash == '#/'){
+            } else if (w.location.hash == '#/') {
                 console.log('Aca');
 
-                
+
             }
             verificarLocalStorageUsuarioLog();
 
         });
     }
 
-    function verificarLocalStorageUsuarioLog(){
+    function verificarLocalStorageUsuarioLog() {
         if (!localStorage.getItem('usuario_iniciado')) {
             let li = d.getElementById('lista-iniciar-S');
             let li_reg = d.getElementById('lista-registrar');
@@ -249,7 +249,21 @@
             li_reg.style.display = 'block';
             li_cerrar.style.display = 'none';
         } else {
-            console.log('Nop');
+            if (w.location.hash == '#/productos') {
+                let btn_redirigir_crear = contenedor.getElementsByClassName('crear-producto')[0];
+                if (usuario_log.length != 0) {
+                    btn_redirigir_crear.style.display = 'block';
+
+                    btn_redirigir_crear.addEventListener('click', function () {
+                        w.location.hash = '#/crear_producto'
+                    });
+                } else {
+                    btn_redirigir_crear.style.display = 'none';
+
+                }
+
+                usuario_iniciado_producto();
+            }
         }
     }
 
@@ -483,14 +497,14 @@
             cerrarSesion();
 
         } else {
-            
+
             // console.log('Vacio?');
             // console.log(usuario_log.length);
         }
     }
     function cerrarSesion() {
         let botonSalir = d.getElementById('cerrar-cuenta');
-        
+
         botonSalir.addEventListener('click', function () {
             localStorage.setItem('usuario_iniciado', []);
             // console.log([].length);
