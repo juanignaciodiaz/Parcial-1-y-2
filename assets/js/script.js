@@ -79,6 +79,7 @@
                     idP = productos[i].id + 1;
                 }
             }
+            verificarLocalStorageUsuarioLog();
         }
     });
 
@@ -149,14 +150,14 @@
                 // lista_plegable[1].addEventListener('click', function(){
                 //     lista_plegable[1].children[0].classList.toggle('desplegar');
                 // });
-                
+
                 // lista_plegable[5].addEventListener('click', function(){
                 //     lista_plegable[5].children[0].classList.toggle('desplegar');
                 // });
                 // lista_plegable[9].addEventListener('click', function(){
                 //     lista_plegable[9].children[0].classList.toggle('desplegar');
                 // });
-                
+
             } else if (w.location.hash == '#/crear_producto') {
                 let imagen = contenedor.getElementsByTagName('img')[0];
                 pintarProductosCRUD(contenedor);
@@ -229,9 +230,27 @@
 
                     });
                 });
+            } else if (w.location.hash == '#/'){
+                console.log('Aca');
+
+                
             }
+            verificarLocalStorageUsuarioLog();
 
         });
+    }
+
+    function verificarLocalStorageUsuarioLog(){
+        if (!localStorage.getItem('usuario_iniciado')) {
+            let li = d.getElementById('lista-iniciar-S');
+            let li_reg = d.getElementById('lista-registrar');
+            let li_cerrar = d.getElementById('cerrar-cuenta')
+            li.style.display = 'block';
+            li_reg.style.display = 'block';
+            li_cerrar.style.display = 'none';
+        } else {
+            console.log('Nop');
+        }
     }
 
 
@@ -414,7 +433,7 @@
         for (const i in usuarios) {
 
             if (usuarios[i].usuario_nombre == usuario.logUsuario.value) {
-                
+
                 validacion = true;
 
                 if (usuarios[i].contrasenia == usuario.logContrasena.value) {
@@ -464,15 +483,18 @@
             cerrarSesion();
 
         } else {
+            
             // console.log('Vacio?');
             // console.log(usuario_log.length);
         }
     }
     function cerrarSesion() {
         let botonSalir = d.getElementById('cerrar-cuenta');
-
+        
         botonSalir.addEventListener('click', function () {
             localStorage.setItem('usuario_iniciado', []);
+            // console.log([].length);
+            // li.style.display = 'block';
             w.location.hash = '#/';
         });
     }
